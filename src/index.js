@@ -9,8 +9,8 @@ function App() {
 
   return (
     <React.Fragment>
-      <h1>Список товаров</h1>
-      <ul>
+      <h1 className="headline">Список товаров</h1>
+      <ul className="products">
       {products.slice(0, productsLimit).map((item, index) => <li key={item.id}>{item.name}</li>)}
       </ul>
     </React.Fragment>
