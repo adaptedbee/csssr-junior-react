@@ -8,7 +8,10 @@ import Products from './components/Products/Products.js';
 function App() {
   return (
     <React.Fragment>
-      <Headline />
+      <Headline
+        size={1}
+        text={'Список товаров'}
+      />
       <Products />
     </React.Fragment>
   );
