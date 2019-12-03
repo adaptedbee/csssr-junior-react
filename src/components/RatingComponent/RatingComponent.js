@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const RatingComponent = props => {
-  return <div className={props.isFilled ? "starFill" : ""} />;
+  return <div className={props.isFilled ? 'starFill' : ''} />;
 };
 
 RatingComponent.propTypes = {
