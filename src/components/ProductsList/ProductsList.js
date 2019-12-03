@@ -6,11 +6,13 @@ import './ProductsList.css';
 const ProductsList = props => {
   const productsLimit = props.limit ? props.limit : props.products.length;
 
-  return <ul className="products-list">
-    {props.items.slice(0, productsLimit).map((item, index) => 
-      props.renderItem(item)
-    )}
-  </ul>;
+  return (
+    <ul className="products-list">
+      {props.items.slice(0, productsLimit).map((item, index) => 
+        props.renderItem(item)
+      )}
+    </ul>
+  );
 }
 
 ProductsList.propTypes = {
