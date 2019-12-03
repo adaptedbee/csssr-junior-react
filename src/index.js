@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 import Headline from './components/Headline/Headline.js';
-import Products from './components/Products/Products.js';
+import ProductsList from './components/ProductsList/ProductsList.js';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       >
         Список товаров
       </Headline>
-      <Products />
+      <ProductsList />
     </React.Fragment>
   );
 }

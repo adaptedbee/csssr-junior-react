@@ -1,24 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import './ProductsList.css';
+import List from '../List/List.js';
+import products from '../../products.json';
+import ProductItem from 'csssr-school-product-card';
+import RatingComponent from '../RatingComponent/RatingComponent.js';
 
-const ProductsList = props => {
-  const productsLimit = props.limit ? props.limit : props.products.length;
-
-  return (
-    <ul className="products-list">
-      {props.items.slice(0, productsLimit).map((item, index) => 
-        props.renderItem(item)
-      )}
-    </ul>
-  );
+const renderProduct = item => {
+  return <ProductItem
+    key={item.id}
+    isInStock={item.isInStock}
+    img={item.img}
+    title={item.title}
+    price={item.price}
+    subPriceContent={item.subPriceContent}
+    maxRating={item.maxRating}
+    rating={item.rating}
+    ratingComponent={RatingComponent}
+  />;
 }
 
-ProductsList.propTypes = {
-  items: PropTypes.array,
-  renderItem: PropTypes.func,
-  limit: PropTypes.number
-};
+const PRODUCTS_LIMIT = 3;
+
+const ProductsList = props => {
+  return <List 
+    items={products.slice(0, PRODUCTS_LIMIT)} 
+    renderItem={renderProduct} 
+  />;
+}
 
 export default ProductsList;
