@@ -10,8 +10,9 @@ function App() {
     <React.Fragment>
       <Headline
         size={1}
-        text={'Список товаров'}
-      />
+      >
+        Список товаров
+      </Headline>
       <Products />
     </React.Fragment>
   );
