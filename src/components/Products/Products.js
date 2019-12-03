@@ -3,10 +3,7 @@ import React from 'react';
 import ProductsList from '../ProductsList/ProductsList.js';
 import products from '../../products.json';
 import ProductItem from 'csssr-school-product-card';
-
-const ratingComponent = ({ isFilled }) => {
-  return <div className={isFilled ? "starFill" : ""} />;
-};
+import RatingComponent from '../RatingComponent/RatingComponent.js';
 
 const renderProduct = item => {
   return <ProductItem
@@ -18,7 +15,7 @@ const renderProduct = item => {
     subPriceContent={item.subPriceContent}
     maxRating={item.maxRating}
     rating={item.rating}
-    ratingComponent={ratingComponent}
+    ratingComponent={RatingComponent}
   />;
 }
 
