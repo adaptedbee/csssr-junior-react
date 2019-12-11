@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import List from '../List/List.js';
 import products from '../../products.json';
@@ -19,11 +20,19 @@ const renderProduct = item => {
   />;
 }
 
-const ProductsList = props => {
-  return <List 
-    items={products} 
-    renderItem={renderProduct} 
-  />;
+class ProductsList extends React.Component {
+  render() {
+    return (
+      <List 
+        items={products} 
+        renderItem={renderProduct} 
+      />
+    );
+  }
 }
 
+ProductsList.propTypes = {
+  minPrice: PropTypes.number,
+  maxPrice: PropTypes.number
+};
 export default ProductsList;

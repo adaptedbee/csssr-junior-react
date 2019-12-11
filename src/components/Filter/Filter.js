@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Filter.css';
 import Headline from '../Headline/Headline.js';
@@ -80,5 +81,11 @@ class Filter extends React.Component {
     );
   }
 }
+
+Filter.propTypes = {
+  minPrice: PropTypes.number,
+  maxPrice: PropTypes.number,
+  updatePriceFilter: PropTypes.func
+};
 
 export default Filter;
