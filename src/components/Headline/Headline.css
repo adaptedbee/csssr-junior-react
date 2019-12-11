@@ -1,3 +1,16 @@
 .headline {
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+h1.headline {
   text-align: center;
+}
+h3.headline {
+  margin-top: 0;
+  margin-bottom: 24px;
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #323C48;
 }

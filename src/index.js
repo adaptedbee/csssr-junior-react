@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Headline from './components/Headline/Headline.js';
 import ProductsList from './components/ProductsList/ProductsList.js';
+import Filter from './components/Filter/Filter.js';
 
 function App() {
   return (
@@ -13,7 +14,14 @@ function App() {
       >
         Список товаров
       </Headline>
-      <ProductsList />
+      <div className="container">
+        <div className="container__left">
+          <Filter />
+        </div>
+        <div className="container__center">
+          <ProductsList />
+        </div>
+      </div>
     </React.Fragment>
   );
 }
