@@ -6,7 +6,13 @@ import './List.css';
 const List = props => {
   return (
     <ul className="list">
-      {props.items.map((item) => props.renderItem(item))}
+      {props.items.map((item, index) => 
+        <li
+          key={index}
+        >
+          {props.renderItem(item)}
+        </li>
+      )}
     </ul>
   );
 }
