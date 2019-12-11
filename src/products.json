@@ -4,7 +4,7 @@
         "title": "Название первого товара",
         "isInStock": true,
         "img": "https://source.unsplash.com/random/800x600",
-        "price": "23 000 ₽",
+        "price": 23000,
         "subPriceContent": "",
         "maxRating": 5,
         "rating": 3.5
@@ -14,7 +14,7 @@
         "title": "Название второго товара",
         "isInStock": false,
         "img": "https://source.unsplash.com/random/800x600",
-        "price": "23 000 ₽",
+        "price": 14000,
         "subPriceContent": "",
         "maxRating": 5,
         "rating": 3.5
@@ -24,7 +24,7 @@
         "title": "Название третьего товара",
         "isInStock": true,
         "img": "https://source.unsplash.com/random/800x600",
-        "price": "23 000 ₽",
+        "price": 27000,
         "subPriceContent": "23 000 ₽",
         "maxRating": 5,
         "rating": 3.5
@@ -34,7 +34,7 @@
         "title": "Название четвертого товара",
         "isInStock": true,
         "img": "https://source.unsplash.com/random/800x600",
-        "price": "23 000 ₽",
+        "price": 18000,
         "subPriceContent": "23 000 ₽",
         "maxRating": 5,
         "rating": 3.5
@@ -44,7 +44,7 @@
         "title": "Название пятого товара",
         "isInStock": true,
         "img": "https://source.unsplash.com/random/800x600",
-        "price": "23 000 ₽",
+        "price": 135000,
         "subPriceContent": "",
         "maxRating": 5,
         "rating": 3.5
@@ -54,7 +54,7 @@
         "title": "Название шестого товара",
         "isInStock": false,
         "img": "https://source.unsplash.com/random/800x600",
-        "price": "23 000 ₽",
+        "price": 5000,
         "subPriceContent": "",
         "maxRating": 5,
         "rating": 3.5

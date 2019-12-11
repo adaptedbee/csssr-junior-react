@@ -11,7 +11,7 @@ const renderProduct = item => {
     isInStock={item.isInStock}
     img={item.img}
     title={item.title}
-    price={item.price}
+    price={item.price + ' ₽'}
     subPriceContent={item.subPriceContent}
     maxRating={item.maxRating}
     rating={item.rating}
