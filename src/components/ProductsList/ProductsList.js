@@ -22,9 +22,11 @@ const renderProduct = item => {
 
 class ProductsList extends React.Component {
   render() {
+    const filteredProducts = products.filter(item => item.price >= this.props.minPrice && item.price <= this.props.maxPrice);
+
     return (
       <List 
-        items={products} 
+        items={filteredProducts} 
         renderItem={renderProduct} 
       />
     );
