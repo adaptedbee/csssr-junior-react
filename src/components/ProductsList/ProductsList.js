@@ -19,11 +19,9 @@ const renderProduct = item => {
   />;
 }
 
-const PRODUCTS_LIMIT = 3;
-
 const ProductsList = props => {
   return <List 
-    items={products.slice(0, PRODUCTS_LIMIT)} 
+    items={products} 
     renderItem={renderProduct} 
   />;
 }

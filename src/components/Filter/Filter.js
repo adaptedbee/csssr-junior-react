@@ -2,17 +2,10 @@ import React from 'react';
 
 import './Filter.css';
 import Headline from '../Headline/Headline.js';
-import products from '../../products.json';
 
 class Filter extends React.Component {
   constructor(props) {
     super(props);
-
-    const productsPrices = products.map(item => item.price);
-    this.state = {
-      minPrice: Math.min(...productsPrices),
-      maxPrice: Math.max(...productsPrices)
-    };
 
     this.minPriceInput = React.createRef();
     this.maxPriceInput = React.createRef();
@@ -20,10 +13,12 @@ class Filter extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({
-      minPrice: this.parsePriceInput(this.minPriceInput.current.value),
-      maxPrice: this.parsePriceInput(this.maxPriceInput.current.value),
-    });
+    
+    const parsedMinPrice = this.parsePriceInput(this.minPriceInput.current.value);
+    const parsedMaxPrice = this.parsePriceInput(this.maxPriceInput.current.value);
+    const minPrice = parsedMinPrice !== null ? parsedMinPrice : this.props.minPrice;
+    const maxPrice = parsedMaxPrice !== null ? parsedMaxPrice : this.props.maxPrice;
+    this.props.updatePriceFilter(minPrice, maxPrice);
   }
 
   parsePriceInput(value) {
@@ -58,7 +53,7 @@ class Filter extends React.Component {
             className="filter-form__text-input filter-form__text-input--price" 
             id="from-price" 
             type="text"
-            defaultValue={this.state.minPrice}
+            defaultValue={this.props.minPrice}
             ref={this.minPriceInput}
           />
           <label 
@@ -71,7 +66,7 @@ class Filter extends React.Component {
             className="filter-form__text-input filter-form__text-input--price" 
             id="to-price" 
             type="text"
-            defaultValue={this.state.maxPrice}
+            defaultValue={this.props.maxPrice}
             ref={this.maxPriceInput}
           />
         </div>
