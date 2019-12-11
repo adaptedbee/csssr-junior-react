@@ -2,17 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
-import products from './products.json';
+import Headline from './components/Headline/Headline.js';
+import ProductsList from './components/ProductsList/ProductsList.js';
 
 function App() {
-  const productsLimit = 3;
-
   return (
     <React.Fragment>
-      <h1>Список товаров</h1>
-      <ul>
-      {products.slice(0, productsLimit).map((item, index) => <li key={item.id}>{item.name}</li>)}
-      </ul>
+      <Headline
+        size={1}
+      >
+        Список товаров
+      </Headline>
+      <ProductsList />
     </React.Fragment>
   );
 }
