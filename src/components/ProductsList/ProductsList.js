@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductItem from 'csssr-school-product-card';
-import { logger } from 'csssr-school-utils';
 
+import LogRender from '../LogRender/LogRender.js';
 import List from '../List/List.js';
 import products from '../../products.json';
 import RatingComponent from '../RatingComponent/RatingComponent.js';
@@ -21,12 +21,7 @@ const renderProduct = item => {
   />;
 }
 
-class ProductsList extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    logger.call(this, this.constructor.name, nextProps, nextState);
-    return true;
-  }
-  
+class ProductsList extends LogRender {  
   render() {
     const filteredProducts = products.filter(item => item.price >= this.props.minPrice && item.price <= this.props.maxPrice);
 
