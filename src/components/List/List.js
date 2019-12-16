@@ -7,9 +7,7 @@ const List = props => {
   return (
     <ul className="list">
       {props.items.map((item, index) => 
-        <li
-          key={index}
-        >
+        <li key={index}>
           {props.renderItem(item)}
         </li>
       )}

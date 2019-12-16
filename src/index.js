@@ -28,9 +28,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Headline
-          size={1}
-        >
+        <Headline size={1}>
           Список товаров
         </Headline>
         <div className="container">

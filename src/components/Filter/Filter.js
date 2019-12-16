@@ -40,20 +40,12 @@ class Filter extends React.Component {
 
   render() {
     return (
-      <form
-        onSubmit={this.handleSubmit}
-        className="filter-form"
-      >
-        <Headline
-          size={3}
-        >
+      <form onSubmit={this.handleSubmit} className="filter-form">
+        <Headline size={3}>
           Цена
         </Headline>
         <div className="filter-form__price-range-wrapper">
-          <label 
-            className="filter-form__label" 
-            htmlFor="from-price"
-          >
+          <label className="filter-form__label" htmlFor="from-price">
             от
           </label>
           <input 
@@ -63,10 +55,7 @@ class Filter extends React.Component {
             defaultValue={this.props.minPrice}
             ref={this.minPriceInput}
           />
-          <label 
-            className="filter-form__label" 
-            htmlFor="to-price"
-          >
+          <label className="filter-form__label" htmlFor="to-price">
             до
           </label>
           <input 
@@ -77,10 +66,7 @@ class Filter extends React.Component {
             ref={this.maxPriceInput}
           />
         </div>
-        <button 
-          className="filter-form__button"
-          type="submit"
-        >
+        <button type="submit" className="filter-form__button">
           Применить
         </button>
       </form>
