@@ -1,0 +1,42 @@
+.filter-form__price-range-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.filter-form__label {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  color: #323C48;
+}
+
+.filter-form__text-input {
+  height: 30px;
+  box-sizing: border-box;
+  padding: 5px;
+
+  background: #FFFFFF;
+  border: 1px solid #7E8FA4;
+}
+
+.filter-form__text-input--price {
+  width: 35%;
+}
+
+.filter-form__button {
+  width: 100%;
+  padding-top: 9px;
+  padding-bottom: 9px;
+
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 14px;
+  color: #FFFFFF;
+
+  background: #323C48;
+  border: none;
+}

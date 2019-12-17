@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import ProductItem from 'csssr-school-product-card';
 
+import LogRender from '../LogRender/LogRender.js';
 import List from '../List/List.js';
 import products from '../../products.json';
-import ProductItem from 'csssr-school-product-card';
 import RatingComponent from '../RatingComponent/RatingComponent.js';
 
 const renderProduct = item => {
@@ -11,7 +13,7 @@ const renderProduct = item => {
     isInStock={item.isInStock}
     img={item.img}
     title={item.title}
-    price={item.price}
+    price={item.price + ' ₽'}
     subPriceContent={item.subPriceContent}
     maxRating={item.maxRating}
     rating={item.rating}
@@ -19,13 +21,18 @@ const renderProduct = item => {
   />;
 }
 
-const PRODUCTS_LIMIT = 3;
+class ProductsList extends LogRender {  
+  render() {
+    const filteredProducts = products.filter(item => item.price >= this.props.minPrice && item.price <= this.props.maxPrice);
 
-const ProductsList = props => {
-  return <List 
-    items={products.slice(0, PRODUCTS_LIMIT)} 
-    renderItem={renderProduct} 
-  />;
+    return (
+      <List items={filteredProducts} renderItem={renderProduct} />
+    );
+  }
 }
 
+ProductsList.propTypes = {
+  minPrice: PropTypes.number,
+  maxPrice: PropTypes.number
+};
 export default ProductsList;

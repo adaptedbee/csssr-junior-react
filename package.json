@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "csssr-school-product-card": "github:CSSSR-School/junior-course-product-card",
+    "csssr-school-utils": "github:CSSSR-School/junior-course-utils",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8"
