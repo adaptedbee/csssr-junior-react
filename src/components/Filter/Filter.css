@@ -13,19 +13,6 @@
   color: #323C48;
 }
 
-.filter-form__text-input {
-  height: 30px;
-  box-sizing: border-box;
-  padding: 5px;
-
-  background: #FFFFFF;
-  border: 1px solid #7E8FA4;
-}
-
-.filter-form__text-input--price {
-  width: 35%;
-}
-
 .filter-form__button {
   width: 100%;
   padding-top: 9px;
