@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Discount from 'csssr-school-input-discount';
 
 import './Filter.css';
 import LogRender from '../LogRender/LogRender.js';
@@ -7,11 +8,24 @@ import Headline from '../Headline/Headline.js';
 import InputNumber from '../InputNumber/InputNumber.js';
 
 class Filter extends LogRender {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      discountValue: 0
+    };
+  }
+
   handleMinPriceChange = (value) => {
     this.props.updatePriceFilter(value, this.props.maxPrice);
   }
   handleMaxPriceChange = (value) => {
     this.props.updatePriceFilter(this.props.minPrice, value);
+  }
+  handleDiscountChange = (event) => {
+    this.setState({
+      discountValue: event.target.value
+    });
   }
 
   render() {
@@ -32,9 +46,12 @@ class Filter extends LogRender {
             onPriceChange={this.handleMaxPriceChange}
           />
         </div>
-        {/* <button type="submit" className="filter-form__button">
-          Применить
-        </button> */}
+        <Discount 
+          title="Скидка"
+          name="sale"
+          value={this.state.discountValue}
+          onChange={this.handleDiscountChange}
+        />
       </form>
     );
   }
