@@ -16,34 +16,44 @@ class Filter extends LogRender {
   }
 
   handleMinPriceChange = (event) => {
+    const string = event.target.value.replace(/\D/g, '');
+    const integer = parseInt(string, 10);
+    if (string.length === 0) {
+      this.setState({ 
+        minPriceValue: 0
+      });
+      return;
+    }
+    if (isNaN(integer) || integer < 0) {
+      return;
+    }
+
     this.setState({ 
-      minPriceValue: event.target.value 
+      minPriceValue: integer
     });
   }
   handleMaxPriceChange = (event) => {
+    const string = event.target.value.replace(/\D/g, '');
+    const integer = parseInt(string, 10);
+    if (string.length === 0) {
+      this.setState({ 
+        maxPriceValue: 0
+      });
+      return;
+    }
+    if (isNaN(integer) || integer < 0) {
+      return;
+    }
+
     this.setState({
-      maxPriceValue: event.target.value
+      maxPriceValue: integer
     });
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     
-    const parsedMinPrice = this.parsePriceInput(this.state.minPriceValue);
-    const parsedMaxPrice = this.parsePriceInput(this.state.maxPriceValue);
-    const minPrice = parsedMinPrice !== null ? parsedMinPrice : this.props.minPrice;
-    const maxPrice = parsedMaxPrice !== null ? parsedMaxPrice : this.props.maxPrice;
-    this.props.updatePriceFilter(minPrice, maxPrice);
-  }
-
-  parsePriceInput(value) {
-    const string = value.replace(/\D/g, '');
-    const integer = parseInt(string, 10);
-    if (string.length === 0 || isNaN(integer) || integer < 0) {
-      return null;
-    }
-
-    return integer;
+    this.props.updatePriceFilter(this.state.minPriceValue, this.state.maxPriceValue);
   }
 
   render() {
