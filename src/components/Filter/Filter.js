@@ -6,6 +6,9 @@ import './Filter.css';
 import LogRender from '../LogRender/LogRender.js';
 import Headline from '../Headline/Headline.js';
 import InputNumber from '../InputNumber/InputNumber.js';
+import withInputState from '../../hocs/withInputState.js';
+
+const DiscountWithState = withInputState(Discount);
 
 class Filter extends LogRender {
   handleMinPriceChange = (value) => {
@@ -36,7 +39,7 @@ class Filter extends LogRender {
             onChange={this.handleMaxPriceChange}
           />
         </div>
-        <Discount 
+        <DiscountWithState
           title="Скидка"
           name="sale"
           value={this.props.discount}
