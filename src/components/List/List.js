@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import './List.css';
 
 const List = props => {
+  const ListItem = props.renderItem;
+
   return (
     <ul className="list">
       {props.items.map((item, index) => 
         <li key={index}>
-          {props.renderItem(item)}
+          <ListItem item={item} />
         </li>
       )}
     </ul>
