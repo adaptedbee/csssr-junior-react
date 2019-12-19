@@ -1,69 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Discount from 'csssr-school-input-discount';
 
 import './Filter.css';
 import LogRender from '../LogRender/LogRender.js';
 import Headline from '../Headline/Headline.js';
+import InputNumber from '../InputNumber/InputNumber.js';
+import withInputState from '../../hocs/withInputState.js';
+
+const DiscountWithState = withInputState(Discount);
 
 class Filter extends LogRender {
-  constructor(props) {
-    super(props);
-
-    this.minPriceInput = React.createRef();
-    this.maxPriceInput = React.createRef();
+  handleMinPriceChange = (value) => {
+    this.props.updatePriceFilter(value, this.props.maxPrice);
   }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    
-    const parsedMinPrice = this.parsePriceInput(this.minPriceInput.current.value);
-    const parsedMaxPrice = this.parsePriceInput(this.maxPriceInput.current.value);
-    const minPrice = parsedMinPrice !== null ? parsedMinPrice : this.props.minPrice;
-    const maxPrice = parsedMaxPrice !== null ? parsedMaxPrice : this.props.maxPrice;
-    this.props.updatePriceFilter(minPrice, maxPrice);
+  handleMaxPriceChange = (value) => {
+    this.props.updatePriceFilter(this.props.minPrice, value);
   }
-
-  parsePriceInput(value) {
-    const string = value.replace(/\D/g, '');
-    const integer = parseInt(string, 10);
-    if (string.length === 0 || isNaN(integer) || integer < 0) {
-      return null;
-    }
-
-    return integer;
+  handleDiscountChange = (event) => {
+    this.props.updateDiscount(Number(event.target.value));
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="filter-form">
+      <form className="filter-form">
         <Headline size={3}>
           Цена
         </Headline>
         <div className="filter-form__price-range-wrapper">
-          <label className="filter-form__label" htmlFor="from-price">
-            от
-          </label>
-          <input 
-            className="filter-form__text-input filter-form__text-input--price" 
-            id="from-price" 
-            type="text"
-            defaultValue={this.props.minPrice}
-            ref={this.minPriceInput}
+          <label className="filter-form__label">от</label>
+          <InputNumber 
+            value={this.props.minPrice}
+            onChange={this.handleMinPriceChange}
           />
-          <label className="filter-form__label" htmlFor="to-price">
-            до
-          </label>
-          <input 
-            className="filter-form__text-input filter-form__text-input--price" 
-            id="to-price" 
-            type="text"
-            defaultValue={this.props.maxPrice}
-            ref={this.maxPriceInput}
+          <label className="filter-form__label">до</label>
+          <InputNumber 
+            value={this.props.maxPrice}
+            onChange={this.handleMaxPriceChange}
           />
         </div>
-        <button type="submit" className="filter-form__button">
-          Применить
-        </button>
+        <DiscountWithState
+          title="Скидка"
+          name="sale"
+          value={this.props.discount}
+          onChange={this.handleDiscountChange}
+        />
       </form>
     );
   }
@@ -72,7 +53,9 @@ class Filter extends LogRender {
 Filter.propTypes = {
   minPrice: PropTypes.number,
   maxPrice: PropTypes.number,
-  updatePriceFilter: PropTypes.func
+  discount: PropTypes.number,
+  updatePriceFilter: PropTypes.func,
+  updateDiscount: PropTypes.func
 };
 
 export default Filter;

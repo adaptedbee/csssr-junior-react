@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "csssr-school-input-discount": "github:CSSSR-School/junior-course-input-discount",
     "csssr-school-product-card": "github:CSSSR-School/junior-course-product-card",
     "csssr-school-utils": "github:CSSSR-School/junior-course-utils",
     "react": "^16.8.6",
+    "react-addons-shallow-compare": "^15.6.2",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8"
   },
