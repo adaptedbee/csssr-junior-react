@@ -20,9 +20,9 @@ export default function withInputState(HoccedComponent) {
     render() {
       return (
         <HoccedComponent 
+          {...this.props} 
           value={this.state.value}
           onChange={this.onChange} 
-          {...this.props} 
         />
       );
     }
