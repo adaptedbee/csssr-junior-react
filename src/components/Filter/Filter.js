@@ -20,6 +20,9 @@ class Filter extends LogRender {
   handleDiscountChange = (event) => {
     this.props.updateDiscount(Number(event.target.value));
   }
+  handleCategoryChange = (event) => {
+    this.props.updateCategories(event.target.value);
+  }
 
   render() {
     return (
@@ -54,9 +57,13 @@ class Filter extends LogRender {
             Категории
           </Headline>
           <div className="filter-form__checkbox-labels">
-            {this.props.categories.map((category, index) => 
+            {this.props.allCategories.map((category, index) => 
               <React.Fragment key={index}>
-                <input id={category} type="checkbox" className="visually-hidden filter-form__checkbox" />
+                <input 
+                  id={category} type="checkbox" value={category}
+                  defaultChecked={this.props.categories.includes(category)}
+                  onChange={this.handleCategoryChange}
+                  className="visually-hidden filter-form__checkbox" />
                 <label htmlFor={category} className="filter-form__checkbox-label">
                   {category}
                 </label>
@@ -76,6 +83,7 @@ Filter.propTypes = {
   updatePriceFilter: PropTypes.func,
   updateDiscount: PropTypes.func,
   categories: PropTypes.arrayOf(PropTypes.string),
+  allCategories: PropTypes.arrayOf(PropTypes.string),
   updateCategories: PropTypes.func
 };
 

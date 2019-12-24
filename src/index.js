@@ -19,7 +19,8 @@ class App extends React.Component {
       minPrice: Math.min(...productsPrices),
       maxPrice: Math.max(...productsPrices),
       discount: 0,
-      categories: productsCategories
+      categories: productsCategories,
+      allCategories: productsCategories
     };
   }
 
@@ -44,7 +45,7 @@ class App extends React.Component {
     } else {
       updatedCategories.push(category);
     }
-    
+
     this.setState({
       categories: updatedCategories
     });
@@ -65,6 +66,7 @@ class App extends React.Component {
               discount={this.state.discount}
               updateDiscount={this.updateDiscount}
               categories={this.state.categories}
+              allCategories={this.state.allCategories}
               updateCategories={this.updateCategories}
             />
           </div>

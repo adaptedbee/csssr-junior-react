@@ -36,7 +36,8 @@ class ProductsList extends LogRender {
   render() {
     const filteredProducts = products
       .filter(item => item.price >= this.props.minPrice && item.price <= this.props.maxPrice)
-      .filter(item => this.props.discount === 0 || (item.oldPrice && (item.oldPrice/item.price) - 1 >= this.props.discount/100));
+      .filter(item => this.props.discount === 0 || (item.oldPrice && (item.oldPrice/item.price) - 1 >= this.props.discount/100))
+      .filter(item => this.props.categories.includes(item.category));
 
     return (
       <List items={filteredProducts} renderItem={ProductCard} />
