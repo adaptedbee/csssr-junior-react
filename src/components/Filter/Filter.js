@@ -24,27 +24,46 @@ class Filter extends LogRender {
   render() {
     return (
       <form className="filter-form">
-        <Headline size={3}>
-          Цена
-        </Headline>
-        <div className="filter-form__price-range-wrapper">
-          <label className="filter-form__label">от</label>
-          <InputNumber 
-            value={this.props.minPrice}
-            onChange={this.handleMinPriceChange}
-          />
-          <label className="filter-form__label">до</label>
-          <InputNumber 
-            value={this.props.maxPrice}
-            onChange={this.handleMaxPriceChange}
+        <div className="filter-form__section">
+          <Headline size={3}>
+            Цена
+          </Headline>
+          <div className="filter-form__price-range-wrapper">
+            <label className="filter-form__label">от</label>
+            <InputNumber 
+              value={this.props.minPrice}
+              onChange={this.handleMinPriceChange}
+            />
+            <label className="filter-form__label">до</label>
+            <InputNumber 
+              value={this.props.maxPrice}
+              onChange={this.handleMaxPriceChange}
+            />
+          </div>
+        </div>
+        <div className="filter-form__section">
+          <DiscountWithState
+            title="Скидка"
+            name="sale"
+            value={this.props.discount}
+            onChange={this.handleDiscountChange}
           />
         </div>
-        <DiscountWithState
-          title="Скидка"
-          name="sale"
-          value={this.props.discount}
-          onChange={this.handleDiscountChange}
-        />
+        <div className="filter-form__section">
+          <Headline size={3}>
+            Категории
+          </Headline>
+          <div className="filter-form__checkbox-labels">
+            {this.props.categories.map((category, index) => 
+              <React.Fragment key={index}>
+                <input id={category} type="checkbox" className="visually-hidden filter-form__checkbox" />
+                <label htmlFor={category} className="filter-form__checkbox-label">
+                  {category}
+                </label>
+              </React.Fragment>
+            )}
+          </div>
+        </div>
       </form>
     );
   }
