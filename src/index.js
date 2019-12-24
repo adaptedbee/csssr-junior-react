@@ -12,10 +12,14 @@ class App extends React.Component {
     super(props);
 
     const productsPrices = products.map(item => item.price);
+    const allProductsCategories = products.map(item => item.category);
+    const productsCategories = [...new Set(allProductsCategories)];
+
     this.state = {
       minPrice: Math.min(...productsPrices),
       maxPrice: Math.max(...productsPrices),
-      discount: 0
+      discount: 0,
+      categories: productsCategories
     };
   }
 
@@ -29,6 +33,20 @@ class App extends React.Component {
   updateDiscount = (discount) => {
     this.setState({
       discount: discount
+    });
+  }
+
+  updateCategories = (category) => {
+    let updatedCategories = [...this.state.categories];
+    const categoryIndex = this.state.categories.indexOf(category);
+    if (categoryIndex !== -1) {
+      updatedCategories.splice(categoryIndex, 1);
+    } else {
+      updatedCategories.push(category);
+    }
+    
+    this.setState({
+      categories: updatedCategories
     });
   }
 
@@ -46,6 +64,8 @@ class App extends React.Component {
               updatePriceFilter={this.updatePriceFilter}
               discount={this.state.discount}
               updateDiscount={this.updateDiscount}
+              categories={this.state.categories}
+              updateCategories={this.updateCategories}
             />
           </div>
           <div className="container__center">
@@ -53,6 +73,7 @@ class App extends React.Component {
               minPrice={this.state.minPrice}
               maxPrice={this.state.maxPrice}
               discount={this.state.discount}
+              categories={this.state.categories}
             />
           </div>
         </div>

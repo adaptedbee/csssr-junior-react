@@ -47,6 +47,7 @@ class ProductsList extends LogRender {
 ProductsList.propTypes = {
   minPrice: PropTypes.number,
   maxPrice: PropTypes.number,
-  discount: PropTypes.number
+  discount: PropTypes.number,
+  categories: PropTypes.arrayOf(PropTypes.string)
 };
 export default ProductsList;

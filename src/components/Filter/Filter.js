@@ -55,7 +55,9 @@ Filter.propTypes = {
   maxPrice: PropTypes.number,
   discount: PropTypes.number,
   updatePriceFilter: PropTypes.func,
-  updateDiscount: PropTypes.func
+  updateDiscount: PropTypes.func,
+  categories: PropTypes.arrayOf(PropTypes.string),
+  updateCategories: PropTypes.func
 };
 
 export default Filter;

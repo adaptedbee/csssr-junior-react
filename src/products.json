@@ -6,7 +6,8 @@
         "img": "https://source.unsplash.com/random/800x600",
         "price": 23000,
         "maxRating": 5,
-        "rating": 3.5
+        "rating": 3.5,
+        "category": "Clothes"
     },
     {
         "id": 2,
@@ -15,7 +16,8 @@
         "img": "https://source.unsplash.com/random/800x600",
         "price": 14000,
         "maxRating": 5,
-        "rating": 3.5
+        "rating": 3.5,
+        "category": "Books"
     },
     {
         "id": 3,
@@ -25,7 +27,8 @@
         "price": 27000,
         "oldPrice": 30000,
         "maxRating": 5,
-        "rating": 3.5
+        "rating": 3.5,
+        "category": "Clothes"
     },
     {
         "id": 4,
@@ -35,7 +38,8 @@
         "price": 18000,
         "oldPrice": 23000,
         "maxRating": 5,
-        "rating": 3.5
+        "rating": 3.5,
+        "category": "Clothes"
     },
     {
         "id": 5,
@@ -44,7 +48,8 @@
         "img": "https://source.unsplash.com/random/800x600",
         "price": 135000,
         "maxRating": 5,
-        "rating": 3.5
+        "rating": 3.5,
+        "category": "Books"
     },
     {
         "id": 6,
@@ -53,6 +58,7 @@
         "img": "https://source.unsplash.com/random/800x600",
         "price": 5000,
         "maxRating": 5,
-        "rating": 3.5
+        "rating": 3.5,
+        "category": "Clothes"
     }
 ]
