@@ -18,6 +18,7 @@
 
 .filter-form__button {
   width: 100%;
+  box-sizing: border-box;
   padding-top: 9px;
   padding-bottom: 9px;
 
@@ -26,8 +27,15 @@
   line-height: 14px;
   color: #FFFFFF;
 
-  background: #323C48;
+  background-color: #323C48;
   border: none;
+}
+
+.filter-form__button--secondary {
+  color: #323C48;
+  
+  background-color: transparent;
+  border: 1px solid #323C48;
 }
 
 .filter-form__checkbox-labels {

@@ -23,6 +23,9 @@ class Filter extends LogRender {
   handleCategoryChange = (event) => {
     this.props.updateCategories(event.target.value);
   }
+  clearFilters = () => {
+    this.props.clearFilters();
+  }
 
   render() {
     return (
@@ -71,6 +74,12 @@ class Filter extends LogRender {
             )}
           </div>
         </div>
+        <button 
+          onClick={this.clearFilters} type="button" 
+          className="filter-form__button filter-form__button--secondary"
+        >
+          Сбросить фильтры
+        </button>
       </form>
     );
   }
@@ -84,7 +93,8 @@ Filter.propTypes = {
   updateDiscount: PropTypes.func,
   categories: PropTypes.arrayOf(PropTypes.string),
   allCategories: PropTypes.arrayOf(PropTypes.string),
-  updateCategories: PropTypes.func
+  updateCategories: PropTypes.func,
+  clearFilters: PropTypes.func
 };
 
 export default Filter;

@@ -37,6 +37,17 @@ class App extends React.Component {
     });
   }
 
+  clearFilters = () => {
+    const productsPrices = products.map(item => item.price);
+
+    this.setState({
+      minPrice: Math.min(...productsPrices),
+      maxPrice: Math.max(...productsPrices),
+      discount: 0,
+      categories: this.state.allCategories
+    });
+  }
+
   updateCategories = (category) => {
     let updatedCategories = [...this.state.categories];
     const categoryIndex = this.state.categories.indexOf(category);
@@ -68,6 +79,7 @@ class App extends React.Component {
               categories={this.state.categories}
               allCategories={this.state.allCategories}
               updateCategories={this.updateCategories}
+              clearFilters={this.clearFilters}
             />
           </div>
           <div className="container__center">
