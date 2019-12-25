@@ -16,7 +16,7 @@ class InputNumber extends React.Component {
       return;
     }
 
-    this.props.onChange(integer);
+    this.props.onChange(event);
   }
 
   render() {

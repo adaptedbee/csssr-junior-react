@@ -10,11 +10,13 @@ export default function withInputState(HoccedComponent) {
       };
     }
 
-    onChange = (value) => {
+    onChange = (event) => {
+      const number = Number(event.target.value);
+      
       this.setState({
-        value: value
+        value: number
       });
-      this.props.onChange(value);
+      this.props.onChange(number);
     }
 
     render() {
