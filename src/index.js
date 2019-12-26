@@ -16,6 +16,9 @@ class App extends React.Component {
     const allProductsCategories = products.map(item => item.category);
     const productsCategories = [...new Set(allProductsCategories)];
 
+    const url = productsCategories.join(',');
+    window.history.replaceState({ url }, 'title', url);
+
     this.state = {
       filters: {
         minPrice: Math.min(...productsPrices),
@@ -26,6 +29,24 @@ class App extends React.Component {
       allCategories: productsCategories
     };
   }
+
+  componentDidMount() {
+    window.addEventListener('popstate', this.setFromHistory);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('popstate', this.setFromHistory);
+  }
+  
+  setFromHistory = (event) => {
+    const categoriesFromUrl = event.state['url'].split(',');
+
+    this.setState(prevState => ({
+      filters: {
+        ...prevState.filters,
+        categories: categoriesFromUrl
+      }
+    }));
+  };
 
   updatePriceFilter = (minPrice, maxPrice) => {
     this.setState(prevState => ({
@@ -61,6 +82,9 @@ class App extends React.Component {
         categories: updatedCategories
       }
     }));
+
+    const url = updatedCategories.join(',');
+    window.history.pushState({ url }, 'title', url);
   }
 
   clearFilters = () => {
