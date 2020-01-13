@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { minBy, maxBy } from 'csssr-school-utils';
 
 import './index.css';
 import Headline from './components/Headline/Headline.js';
@@ -12,7 +13,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    const productsPrices = products.map(item => item.price);
     const allProductsCategories = products.map(item => item.category);
     const productsCategories = [...new Set(allProductsCategories)];
 
@@ -21,8 +21,8 @@ class App extends React.Component {
 
     this.state = {
       filters: {
-        minPrice: Math.min(...productsPrices),
-        maxPrice: Math.max(...productsPrices),
+        minPrice: minBy(obj => obj.price, products).price,
+        maxPrice: maxBy(obj => obj.price, products).price,
         discount: 0,
         categories: productsCategories,
       },
@@ -88,12 +88,10 @@ class App extends React.Component {
   }
 
   clearFilters = () => {
-    const productsPrices = products.map(item => item.price);
-
     this.setState({
       filters: {
-        minPrice: Math.min(...productsPrices),
-        maxPrice: Math.max(...productsPrices),
+        minPrice: minBy(obj => obj.price, products).price,
+        maxPrice: maxBy(obj => obj.price, products).price,
         discount: 0,
         categories: this.state.allCategories
       }
