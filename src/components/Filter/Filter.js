@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Discount from 'csssr-school-input-discount';
 
 import './Filter.css';
@@ -13,25 +12,25 @@ const DiscountWithState = withInputState(Discount);
 
 class Filter extends LogRender {
   handleMinPriceChange = (value) => {
-    this.props.updatePriceFilter(value, this.props.maxPrice);
+    this.context.filtersFunctions.updatePriceFilter(value, this.context.filters.maxPrice);
   }
   handleMaxPriceChange = (value) => {
-    this.props.updatePriceFilter(this.props.minPrice, value);
+    this.context.filtersFunctions.updatePriceFilter(this.context.filters.minPrice, value);
   }
   handleDiscountChange = (value) => {
-    this.props.updateDiscount(value);
+    this.context.filtersFunctions.updateDiscount(value);
   }
   handleCategoryChange = (event) => {
-    this.props.updateCategories(event.target.value);
+    this.context.filtersFunctions.updateCategories(event.target.value);
   }
   clearFilters = () => {
-    this.props.clearFilters();
+    this.context.filtersFunctions.clearFilters();
   }
 
   render() {
     return (
       <FiltersContext.Consumer>
-        {value => (
+        {context => (
           <form className="filter-form">
             <div className="filter-form__section">
               <Headline size={3}>
@@ -40,12 +39,12 @@ class Filter extends LogRender {
               <div className="filter-form__price-range-wrapper">
                 <label className="filter-form__label">от</label>
                 <InputNumber 
-                  value={value.minPrice}
+                  value={context.filters.minPrice}
                   onChange={this.handleMinPriceChange}
                 />
                 <label className="filter-form__label">до</label>
                 <InputNumber 
-                  value={value.maxPrice}
+                  value={context.filters.maxPrice}
                   onChange={this.handleMaxPriceChange}
                 />
               </div>
@@ -54,7 +53,7 @@ class Filter extends LogRender {
               <DiscountWithState
                 title="Скидка"
                 name="sale"
-                value={value.discount}
+                value={context.filters.discount}
                 onChange={this.handleDiscountChange}
               />
             </div>
@@ -63,11 +62,11 @@ class Filter extends LogRender {
                 Категории
               </Headline>
               <div className="filter-form__checkbox-labels">
-                {this.props.allCategories.map((category, index) => 
+                {context.allCategories.map((category, index) => 
                   <React.Fragment key={index}>
                     <input 
                       id={category} type="checkbox" value={category}
-                      defaultChecked={value.categories.includes(category)}
+                      defaultChecked={context.filters.categories.includes(category)}
                       onChange={this.handleCategoryChange}
                       className="visually-hidden filter-form__checkbox" />
                     <label htmlFor={category} className="filter-form__checkbox-label">
@@ -90,12 +89,6 @@ class Filter extends LogRender {
   }
 }
 
-Filter.propTypes = {
-  updatePriceFilter: PropTypes.func,
-  updateDiscount: PropTypes.func,
-  allCategories: PropTypes.arrayOf(PropTypes.string),
-  updateCategories: PropTypes.func,
-  clearFilters: PropTypes.func
-};
+Filter.contextType = FiltersContext;
 
 export default Filter;

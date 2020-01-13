@@ -106,14 +106,17 @@ class App extends React.Component {
         </Headline>
         <div className="container">
           <div className="container__left">
-            <FiltersContext.Provider value={this.state.filters}>
-              <Filter 
-                updatePriceFilter={this.updatePriceFilter}
-                updateDiscount={this.updateDiscount}
-                allCategories={this.state.allCategories}
-                updateCategories={this.updateCategories}
-                clearFilters={this.clearFilters}
-              />
+            <FiltersContext.Provider value={{
+              filters: this.state.filters,
+              allCategories: this.state.allCategories,
+              filtersFunctions: {
+                updatePriceFilter: this.updatePriceFilter,
+                updateDiscount: this.updateDiscount,
+                updateCategories: this.updateCategories,
+                clearFilters: this.clearFilters
+              }
+            }}>
+              <Filter />
             </FiltersContext.Provider>
           </div>
           <div className="container__center">
