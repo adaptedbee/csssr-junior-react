@@ -99,6 +99,11 @@ class App extends React.Component {
   }
 
   render() {
+    const filteredProducts = products
+      .filter(item => item.price >= this.state.filters.minPrice && item.price <= this.state.filters.maxPrice)
+      .filter(item => this.state.filters.discount === 0 || (item.oldPrice && (item.oldPrice/item.price) - 1 >= this.state.filters.discount/100))
+      .filter(item => this.state.filters.categories.includes(item.category));
+
     return (
       <React.Fragment>
         <Headline size={1}>
@@ -121,10 +126,7 @@ class App extends React.Component {
           </div>
           <div className="container__center">
             <ProductsList 
-              minPrice={this.state.filters.minPrice}
-              maxPrice={this.state.filters.maxPrice}
-              discount={this.state.filters.discount}
-              categories={this.state.filters.categories}
+              products={filteredProducts}
             />
           </div>
         </div>
