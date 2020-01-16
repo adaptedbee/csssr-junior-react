@@ -96,6 +96,9 @@ class App extends React.Component {
         categories: this.state.allCategories
       }
     });
+
+    const url = this.state.allCategories.join(',');
+    window.history.replaceState({ url }, 'title', url);
   }
 
   render() {
