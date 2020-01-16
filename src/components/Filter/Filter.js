@@ -66,7 +66,7 @@ class Filter extends LogRender {
                   <React.Fragment key={index}>
                     <input 
                       id={category} type="checkbox" value={category}
-                      defaultChecked={context.filters.categories.includes(category)}
+                      checked={context.filters.categories.includes(category)}
                       onChange={this.handleCategoryChange}
                       className="visually-hidden filter-form__checkbox" />
                     <label htmlFor={category} className="filter-form__checkbox-label">
