@@ -1,8 +1,11 @@
+.filter-form__section {
+  margin-bottom: 24px;
+}
+
 .filter-form__price-range-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
 }
 
 .filter-form__label {
@@ -15,15 +18,54 @@
 
 .filter-form__button {
   width: 100%;
+  box-sizing: border-box;
   padding-top: 9px;
   padding-bottom: 9px;
 
   font-family: "Open Sans", Arial, sans-serif;
-  font-weight: normal;
   font-size: 14px;
   line-height: 14px;
   color: #FFFFFF;
 
-  background: #323C48;
+  background-color: #323C48;
   border: none;
+}
+
+.filter-form__button--secondary {
+  color: #323C48;
+  
+  background-color: transparent;
+  border: 1px solid #323C48;
+}
+
+.filter-form__checkbox-labels {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter-form__checkbox-label {
+  box-sizing: border-box;
+  padding: 8px 16px;
+  margin-right: 16px;
+
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 14px;
+  color: #7E8FA4;
+
+  background-color: #FFFFFF;
+  border: 1px solid #7E8FA4;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.filter-form__checkbox-label:last-child {
+  margin-right: 0;
+}
+
+.filter-form__checkbox:checked + .filter-form__checkbox-label {
+  color: #FFFFFF;
+  
+  background-color: #323C48;
+  border-color: #323C48;
 }

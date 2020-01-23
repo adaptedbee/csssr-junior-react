@@ -2,26 +2,16 @@ import React from 'react';
 
 export default function withInputState(HoccedComponent) {
   return class extends React.Component {
-    constructor(props) {
-      super(props);
-
-      this.state = {
-        value: 0
-      };
-    }
-
-    onChange = (value) => {
-      this.setState({
-        value: value
-      });
-      this.props.onChange(value);
+    onChange = (event) => {
+      const number = event && event.target ? Number(event.target.value) : 0;
+      
+      this.props.onChange(number);
     }
 
     render() {
       return (
         <HoccedComponent 
           {...this.props} 
-          value={this.state.value}
           onChange={this.onChange} 
         />
       );
