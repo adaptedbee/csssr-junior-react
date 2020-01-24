@@ -25,7 +25,7 @@ export function filtersReducer(state = {}, action) {
       if (categoryIndex !== -1) {
         updatedCategories.splice(categoryIndex, 1);
       } else {
-        updatedCategories.push(category);
+        updatedCategories.push(action.data.category);
       }
 
       return Object.assign({}, state, {
