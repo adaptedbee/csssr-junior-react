@@ -1,42 +1,45 @@
-import React from 'react';
-
-import FiltersContext from '../filters-context';
-import { store } from '../store';
+import { connect } from 'react-redux';
 import Filter from '../components/Filter/Filter.js';
 
-const FilterContainer = () => {
-  return (
-    <FiltersContext.Provider value={{
-      filters: store.getState().filters,
-      allCategories: store.getState().allCategories,
-      filtersFunctions: {
-        updatePriceFilter: (minPrice, maxPrice) => store.dispatch({
-          type: "UPDATE_PRICE",
-          data: {
-            minPrice: minPrice,
-            maxPrice: maxPrice
-          }
-        }),
-        updateDiscount: (discount) => store.dispatch({
-          type: "UPDATE_DISCOUNT",
-          data: {
-            discount: discount
-          }
-        }),
-        updateCategories: (category) => store.dispatch({
-          type: "UPDATE_CATEGORIES",
-          data: {
-            category: category
-          }
-        }),
-        clearFilters: () => store.dispatch({
-          type: "CLEAR_FILTERS"
-        })
-      }
-    }}>
-      <Filter />
-    </FiltersContext.Provider>
-  );
-}
+const mapStateToProps = (state) => {
+  return {
+    filters: state.filters,
+    allCategories: state.allCategories
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    filtersFunctions: {
+      updatePriceFilter: (minPrice, maxPrice) => dispatch({
+        type: "UPDATE_PRICE",
+        data: {
+          minPrice: minPrice,
+          maxPrice: maxPrice
+        }
+      }),
+      updateDiscount: (discount) => dispatch({
+        type: "UPDATE_DISCOUNT",
+        data: {
+          discount: discount
+        }
+      }),
+      updateCategories: (category) => dispatch({
+        type: "UPDATE_CATEGORIES",
+        data: {
+          category: category
+        }
+      }),
+      clearFilters: () => dispatch({
+        type: "CLEAR_FILTERS"
+      })
+    }
+  };
+};
+
+const FilterContainer = connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(Filter);
 
 export default FilterContainer;
