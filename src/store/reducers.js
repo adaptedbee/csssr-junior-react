@@ -54,6 +54,8 @@ export function filtersReducer(state = {}, action) {
       // const url = this.state.allCategories.join(',');
       // window.history.replaceState({ url }, 'title', url);
     }
+    default: {
+      return state;
+    }
   }
-  return state;
 }
