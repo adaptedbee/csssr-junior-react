@@ -7,6 +7,7 @@ export function filtersReducer(state = {}, action) {
     case "UPDATE_PRICE": {
       return Object.assign({}, state, {
         filters: {
+          ...state.filters,
           minPrice: action.data.minPrice,
           maxPrice: action.data.maxPrice
         }
@@ -15,6 +16,7 @@ export function filtersReducer(state = {}, action) {
     case "UPDATE_DISCOUNT": {
       return Object.assign({}, state, {
         filters: {
+          ...state.filters,
           discount: action.data.discount
         }
       });
@@ -30,6 +32,7 @@ export function filtersReducer(state = {}, action) {
 
       return Object.assign({}, state, {
         filters: {
+          ...state.filters,
           categories: updatedCategories
         }
       });
@@ -40,6 +43,7 @@ export function filtersReducer(state = {}, action) {
     case "CLEAR_FILTERS": {
       return Object.assign({}, state, {
         filters: {
+          ...state.filters,
           minPrice: minBy(obj => obj.price, products).price,
           maxPrice: maxBy(obj => obj.price, products).price,
           discount: 0,
