@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import ProductsList from '../components/ProductsList/ProductsList.js';
 
+import { goToPage } from '../store/actions';
+
 const mapStateToProps = (state) => {
   return {
     filters: state.filters,
@@ -11,12 +13,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    goToPage: (page) => dispatch({
-      type: "GO_TO_PAGE",
-      data: {
-        page: page
-      }
-    })
+    goToPage: (page) => dispatch(goToPage(page))
   };
 };
 
