@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Pagination.css';
 
@@ -11,7 +12,11 @@ const Pagination = props => {
       </li>
 
       <li className="pagination__item">
-        <button className="pagination__button pagination__button--active">1</button>
+        <button
+          className={"pagination__button " + (props.currentPage === 1 ? 'pagination__button--active' : '')}
+        >
+          1
+        </button>
       </li>
       <li className="pagination__item">
         <button className="pagination__button">2</button>
@@ -38,5 +43,9 @@ const Pagination = props => {
     </ul>
   );
 }
+
+Pagination.propTypes = {
+  currentPage: PropTypes.number
+};
 
 export default Pagination;

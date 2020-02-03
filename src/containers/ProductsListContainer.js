@@ -3,7 +3,9 @@ import ProductsList from '../components/ProductsList/ProductsList.js';
 
 const mapStateToProps = (state) => {
   return {
-    filters: state.filters
+    filters: state.filters,
+    currentPage: state.currentPage,
+    productsPerPage: state.productsPerPage
   };
 };
 

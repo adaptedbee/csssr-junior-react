@@ -14,7 +14,9 @@ const initialState = {
     discount: 0,
     categories: productsCategories,
   },
-  allCategories: productsCategories
+  allCategories: productsCategories,
+  currentPage: 1,
+  productsPerPage: 3
 };
 
 export const store = createStore(filtersReducer, initialState);

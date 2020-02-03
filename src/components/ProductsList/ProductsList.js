@@ -18,14 +18,16 @@ class ProductsList extends LogRender {
       <React.Fragment>
         <List items={filteredProducts} renderItem={ProductCard} />
 
-        <Pagination />
+        <Pagination currentPage={this.props.currentPage} />
       </React.Fragment>
     );
   }
 }
 
 ProductsList.propTypes = {
-  filters: PropTypes.object
+  filters: PropTypes.object,
+  currentPage: PropTypes.number,
+  productsPerPage: PropTypes.number
 };
 
 export default ProductsList;
