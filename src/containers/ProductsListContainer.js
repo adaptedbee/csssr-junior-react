@@ -10,7 +10,14 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    goToPage: (page) => dispatch({
+      type: "GO_TO_PAGE",
+      data: {
+        page: page
+      }
+    })
+  };
 };
 
 const ProductsListContainer = connect(

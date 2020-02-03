@@ -54,6 +54,11 @@ export function filtersReducer(state = {}, action) {
       // const url = this.state.allCategories.join(',');
       // window.history.replaceState({ url }, 'title', url);
     }
+    case "GO_TO_PAGE": {
+      return Object.assign({}, state, {
+        currentPage: action.data.page
+      });
+    }
     default: {
       return state;
     }
