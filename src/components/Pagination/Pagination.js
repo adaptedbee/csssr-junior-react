@@ -4,6 +4,26 @@ import PropTypes from 'prop-types';
 import './Pagination.css';
 
 class Pagination extends React.Component {
+  constructor(props) {
+    super(props);
+
+    window.history.pushState({}, `page ${this.props.currentPage}`, `?page=${this.props.currentPage}`);
+  }
+  componentDidMount() {
+    window.addEventListener('popstate', this.setPageFromHistory);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('popstate', this.setPageFromHistory);
+  }
+
+  setPageFromHistory = () => {
+    const params = (new URL(document.location)).searchParams;
+    const pageParam = params.get('page');
+    const page = parseInt(pageParam, 10);
+
+    this.goToPage(page);
+  };
+
   getPagesCount = () => {
     return Math.ceil(this.props.productsCount/this.props.productsPerPage);
   }
@@ -13,6 +33,7 @@ class Pagination extends React.Component {
       return;
     }
     this.props.goToPage(page);
+    window.history.pushState({}, `page ${page}`, `?page=${page}`);
   }
 
   render() {
