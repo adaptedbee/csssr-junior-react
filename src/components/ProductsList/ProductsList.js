@@ -13,10 +13,14 @@ class ProductsList extends LogRender {
       .filter(item => item.price >= this.props.filters.minPrice && item.price <= this.props.filters.maxPrice)
       .filter(item => this.props.filters.discount === 0 || (item.oldPrice && (item.oldPrice/item.price) - 1 >= this.props.filters.discount/100))
       .filter(item => this.props.filters.categories.includes(item.category));
+    
+    const startPosition = this.props.productsPerPage*(this.props.currentPage - 1);
+    const endPosition = startPosition + this.props.productsPerPage;
+    const productsOnPage = filteredProducts.slice(startPosition, endPosition);
 
     return (
       <React.Fragment>
-        <List items={filteredProducts} renderItem={ProductCard} />
+        <List items={productsOnPage} renderItem={ProductCard} />
 
         <Pagination currentPage={this.props.currentPage} />
       </React.Fragment>
