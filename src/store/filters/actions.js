@@ -34,12 +34,3 @@ export const clearFilters = () => {
     payload: {},
   };
 };
-
-export const goToPage = (page) => {
-  return {
-    type: types.GO_TO_PAGE,
-    payload: {
-      page
-    },
-  };
-};

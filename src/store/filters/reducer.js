@@ -1,9 +1,21 @@
 import { minBy, maxBy } from 'csssr-school-utils';
 
-import products from '../products.json';
+import products from '../../products.json';
 import * as types from './actionTypes';
 
-export function filtersReducer(state = {}, action) {
+const allProductsCategories = products.map(item => item.category);
+const productsCategories = [...new Set(allProductsCategories)];
+const initialState = {
+  filters: {
+    minPrice: minBy(obj => obj.price, products).price,
+    maxPrice: maxBy(obj => obj.price, products).price,
+    discount: 0,
+    categories: productsCategories,
+  },
+  allCategories: productsCategories,
+};
+
+export default function filtersReducer(state = initialState, action) {
   switch (action.type) {
     case types.UPDATE_PRICE: {
       return Object.assign({}, state, {
@@ -54,11 +66,6 @@ export function filtersReducer(state = {}, action) {
 
       // const url = this.state.allCategories.join(',');
       // window.history.replaceState({ url }, 'title', url);
-    }
-    case types.GO_TO_PAGE: {
-      return Object.assign({}, state, {
-        currentPage: action.payload.page
-      });
     }
     default: {
       return state;

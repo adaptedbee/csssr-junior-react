@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import Filter from '../components/Filter/Filter.js';
 
-import { updatePrice, updateDiscount, updateCategories, clearFilters } from '../store/actions';
+import { updatePrice, updateDiscount, updateCategories, clearFilters } from '../store/filters/actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({filters}) => {
   return {
-    filters: state.filters,
-    allCategories: state.allCategories
+    filters: filters.filters,
+    allCategories: filters.allCategories
   };
 };
 

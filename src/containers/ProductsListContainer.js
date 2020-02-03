@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import ProductsList from '../components/ProductsList/ProductsList.js';
 
-import { goToPage } from '../store/actions';
+import { goToPage } from '../store/pagination/actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({filters, pagination}) => {
   return {
-    filters: state.filters,
-    currentPage: state.currentPage,
-    productsPerPage: state.productsPerPage
+    filters: filters.filters,
+    currentPage: pagination.currentPage,
+    productsPerPage: pagination.productsPerPage
   };
 };
 
