@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "title": "Название первого товара",
+        "title": "Название товара 1",
         "isInStock": true,
         "img": "https://source.unsplash.com/random/800x600",
         "price": 23000,
@@ -11,7 +11,7 @@
     },
     {
         "id": 2,
-        "title": "Название второго товара",
+        "title": "Название товара 2",
         "isInStock": false,
         "img": "https://source.unsplash.com/random/800x600",
         "price": 14000,
@@ -21,7 +21,7 @@
     },
     {
         "id": 3,
-        "title": "Название третьего товара",
+        "title": "Название товара 3",
         "isInStock": true,
         "img": "https://source.unsplash.com/random/800x600",
         "price": 27000,
@@ -32,7 +32,7 @@
     },
     {
         "id": 4,
-        "title": "Название четвертого товара",
+        "title": "Название товара 4",
         "isInStock": true,
         "img": "https://source.unsplash.com/random/800x600",
         "price": 18000,
@@ -43,7 +43,7 @@
     },
     {
         "id": 5,
-        "title": "Название пятого товара",
+        "title": "Название товара 5",
         "isInStock": true,
         "img": "https://source.unsplash.com/random/800x600",
         "price": 135000,
@@ -53,7 +53,69 @@
     },
     {
         "id": 6,
-        "title": "Название шестого товара",
+        "title": "Название товара 6",
+        "isInStock": false,
+        "img": "https://source.unsplash.com/random/800x600",
+        "price": 5000,
+        "maxRating": 5,
+        "rating": 3.5,
+        "category": "Clothes"
+    },
+    {
+        "id": 7,
+        "title": "Название товара 7",
+        "isInStock": true,
+        "img": "https://source.unsplash.com/random/800x600",
+        "price": 23000,
+        "maxRating": 5,
+        "rating": 3.5,
+        "category": "Clothes"
+    },
+    {
+        "id": 8,
+        "title": "Название товара 8",
+        "isInStock": false,
+        "img": "https://source.unsplash.com/random/800x600",
+        "price": 14000,
+        "maxRating": 5,
+        "rating": 3.5,
+        "category": "Books"
+    },
+    {
+        "id": 9,
+        "title": "Название товара 9",
+        "isInStock": true,
+        "img": "https://source.unsplash.com/random/800x600",
+        "price": 27000,
+        "oldPrice": 30000,
+        "maxRating": 5,
+        "rating": 3.5,
+        "category": "Clothes"
+    },
+    {
+        "id": 10,
+        "title": "Название товара 10",
+        "isInStock": true,
+        "img": "https://source.unsplash.com/random/800x600",
+        "price": 18000,
+        "oldPrice": 23000,
+        "maxRating": 5,
+        "rating": 3.5,
+        "category": "Clothes"
+    },
+    {
+        "id": 11,
+        "title": "Название товара 11",
+        "isInStock": true,
+        "img": "https://source.unsplash.com/random/800x600",
+        "price": 135000,
+        "maxRating": 5,
+        "rating": 3.5,
+        "category": "Books"
+    },
+    {
+        "id": 12,
+        "title": "Название товара 12",
         "isInStock": false,
         "img": "https://source.unsplash.com/random/800x600",
         "price": 5000,
