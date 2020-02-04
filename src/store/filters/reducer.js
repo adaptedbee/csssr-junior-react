@@ -72,3 +72,6 @@ export default function filtersReducer(state = initialState, action) {
     }
   }
 }
+
+export const getFilters = (moduleState) => moduleState.filters;
+export const getAllCategories = (moduleState) => moduleState.allCategories;

@@ -2,12 +2,13 @@ import { connect } from 'react-redux';
 import ProductsList from '../components/ProductsList/ProductsList.js';
 
 import { goToPage } from '../store/pagination/actions';
+import { getFilters, getCurrentPage, getProductsPerPage } from '../store/pagination/reducer';
 
 const mapStateToProps = ({filters, pagination}) => {
   return {
-    filters: filters.filters,
-    currentPage: pagination.currentPage,
-    productsPerPage: pagination.productsPerPage
+    filters: getFilters(filters),
+    currentPage: getCurrentPage(pagination),
+    productsPerPage: getProductsPerPage(pagination)
   };
 };
 

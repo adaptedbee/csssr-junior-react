@@ -2,11 +2,12 @@ import { connect } from 'react-redux';
 import Filter from '../components/Filter/Filter.js';
 
 import { updatePrice, updateDiscount, updateCategories, clearFilters } from '../store/filters/actions';
+import { getFilters, getAllCategories } from '../store/filters/reducer';
 
 const mapStateToProps = ({filters}) => {
   return {
-    filters: filters.filters,
-    allCategories: filters.allCategories
+    filters: getFilters(filters),
+    allCategories: getAllCategories(filters)
   };
 };
 

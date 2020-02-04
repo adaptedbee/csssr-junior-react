@@ -17,3 +17,7 @@ export default function paginationReducer(state = initialState, action) {
     }
   }
 }
+
+export const getFilters = (moduleState) => moduleState.filters;
+export const getCurrentPage = (moduleState) => moduleState.currentPage;
+export const getProductsPerPage = (moduleState) => moduleState.productsPerPage;
