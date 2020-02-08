@@ -22,12 +22,14 @@ class ProductsList extends LogRender {
       <React.Fragment>
         <List items={productsOnPage} renderItem={ProductCard} />
 
-        <Pagination 
-          currentPage={this.props.currentPage} 
-          productsPerPage={this.props.productsPerPage}
-          productsCount={filteredProducts.length}
-          goToPage={this.props.goToPage}
-        />
+        {productsOnPage.length > 0 ? (
+          <Pagination 
+            currentPage={this.props.currentPage} 
+            productsPerPage={this.props.productsPerPage}
+            productsCount={filteredProducts.length}
+            goToPage={this.props.goToPage}
+          />
+        ) : ''}
       </React.Fragment>
     );
   }
