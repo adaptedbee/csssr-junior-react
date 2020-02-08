@@ -18,5 +18,5 @@ export default function paginationReducer(state = initialState, action) {
   }
 }
 
-export const getCurrentPage = (moduleState) => moduleState.currentPage;
-export const getProductsPerPage = (moduleState) => moduleState.productsPerPage;
+export const getCurrentPage = (state) => state.pagination.currentPage;
+export const getProductsPerPage = (state) => state.pagination.productsPerPage;

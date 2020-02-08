@@ -5,11 +5,11 @@ import { goToPage } from '../store/pagination/actions';
 import { getFilters } from '../store/filters/reducer';
 import { getCurrentPage, getProductsPerPage } from '../store/pagination/reducer';
 
-const mapStateToProps = ({filters, pagination}) => {
+const mapStateToProps = (state) => {
   return {
-    filters: getFilters(filters),
-    currentPage: getCurrentPage(pagination),
-    productsPerPage: getProductsPerPage(pagination)
+    filters: getFilters(state),
+    currentPage: getCurrentPage(state),
+    productsPerPage: getProductsPerPage(state)
   };
 };
 
