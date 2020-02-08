@@ -7,7 +7,7 @@ class Pagination extends React.Component {
   constructor(props) {
     super(props);
 
-    window.history.pushState({}, `page ${this.props.currentPage}`, `?page=${this.props.currentPage}`);
+    this.setPageFromHistory();
   }
   componentDidMount() {
     window.addEventListener('popstate', this.setPageFromHistory);
