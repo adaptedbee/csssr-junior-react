@@ -1,3 +1,5 @@
+import { createSelector } from 'reselect';
+
 import products from '../../products.json';
 import { getFilters } from '../filters/reducer';
 
@@ -13,13 +15,15 @@ export default function productsReducer(state = initialState, action) {
   }
 }
 
-export const getFilteredProducts = (state) => {
-  const filters = getFilters(state);
-
-  const filteredProducts = state.products.products
-    .filter(item => item.price >= filters.minPrice && item.price <= filters.maxPrice)
-    .filter(item => filters.discount === 0 || (item.oldPrice && (item.oldPrice/item.price) - 1 >= filters.discount/100))
-    .filter(item => filters.categories.includes(item.category));
+export const getProducts = (state) => state.products.products;
+export const getFilteredProducts = createSelector(
+  [getFilters, getProducts],
+  (filters, products) => {
+    const filteredProducts = products
+      .filter(item => item.price >= filters.minPrice && item.price <= filters.maxPrice)
+      .filter(item => filters.discount === 0 || (item.oldPrice && (item.oldPrice/item.price) - 1 >= filters.discount/100))
+      .filter(item => filters.categories.includes(item.category));
   
-  return filteredProducts;
-};
+    return filteredProducts;
+  }
+);
