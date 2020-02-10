@@ -21,7 +21,11 @@ class Pagination extends React.Component {
     const pageParam = params.get('page');
     const page = parseInt(pageParam, 10);
 
-    this.goToPage(page);
+    if (!isNaN(page)) {
+      this.goToPage(page);
+    } else {
+      this.goToPage(1);
+    }
   };
 
   getPagesCount = () => {
@@ -29,7 +33,7 @@ class Pagination extends React.Component {
   }
 
   goToPage = (page) => {
-    if (page <= 0 || page > this.getPagesCount() || page === this.props.currentPage) {
+    if (page <= 0 || page > this.getPagesCount()) {
       return;
     }
     this.props.goToPage(page);
