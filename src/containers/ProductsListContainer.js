@@ -4,14 +4,15 @@ import ProductsList from '../components/ProductsList/ProductsList.js';
 import { goToPage } from '../store/pagination/actions';
 import { getFilters } from '../store/filters/reducer';
 import { getCurrentPage, getProductsPerPage } from '../store/pagination/reducer';
-import { getFilteredProducts } from '../store/products/reducer';
+import { getFilteredProducts, getProductsOnPage } from '../store/products/reducer';
 
 const mapStateToProps = (state) => {
   return {
     filters: getFilters(state),
     currentPage: getCurrentPage(state),
     productsPerPage: getProductsPerPage(state),
-    filteredProducts: getFilteredProducts(state)
+    filteredProducts: getFilteredProducts(state),
+    productsOnPage: getProductsOnPage(state)
   };
 };
 

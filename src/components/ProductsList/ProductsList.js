@@ -8,15 +8,11 @@ import Pagination from '../Pagination/Pagination';
 
 class ProductsList extends LogRender {
   render() {
-    const startPosition = this.props.productsPerPage*(this.props.currentPage - 1);
-    const endPosition = startPosition + this.props.productsPerPage;
-    const productsOnPage = this.props.filteredProducts.slice(startPosition, endPosition);
-
     return (
       <React.Fragment>
-        <List items={productsOnPage} renderItem={ProductCard} />
+        <List items={this.props.productsOnPage} renderItem={ProductCard} />
 
-        {productsOnPage.length > 0 ? (
+        {this.props.productsOnPage.length > 0 ? (
           <Pagination 
             currentPage={this.props.currentPage} 
             productsPerPage={this.props.productsPerPage}
@@ -34,7 +30,8 @@ ProductsList.propTypes = {
   currentPage: PropTypes.number,
   productsPerPage: PropTypes.number,
   goToPage: PropTypes.func,
-  filteredProducts: PropTypes.array
+  filteredProducts: PropTypes.array,
+  productsOnPage: PropTypes.array
 };
 
 export default ProductsList;
