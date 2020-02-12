@@ -1,38 +1,23 @@
 import { connect } from 'react-redux';
 import Filter from '../components/Filter/Filter.js';
 
+import { updatePrice, updateDiscount, updateCategories, clearFilters } from '../store/filters/actions';
+import { getFilters, getAllCategories } from '../store/filters/reducer';
+
 const mapStateToProps = (state) => {
   return {
-    filters: state.filters,
-    allCategories: state.allCategories
+    filters: getFilters(state),
+    allCategories: getAllCategories(state)
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     filtersFunctions: {
-      updatePriceFilter: (minPrice, maxPrice) => dispatch({
-        type: "UPDATE_PRICE",
-        data: {
-          minPrice: minPrice,
-          maxPrice: maxPrice
-        }
-      }),
-      updateDiscount: (discount) => dispatch({
-        type: "UPDATE_DISCOUNT",
-        data: {
-          discount: discount
-        }
-      }),
-      updateCategories: (category) => dispatch({
-        type: "UPDATE_CATEGORIES",
-        data: {
-          category: category
-        }
-      }),
-      clearFilters: () => dispatch({
-        type: "CLEAR_FILTERS"
-      })
+      updatePriceFilter: (minPrice, maxPrice) => dispatch(updatePrice(minPrice, maxPrice)),
+      updateDiscount: (discount) => dispatch(updateDiscount(discount)),
+      updateCategories: (category) => dispatch(updateCategories(category)),
+      clearFilters: () => dispatch(clearFilters())
     }
   };
 };

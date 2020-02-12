@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 
 import './index.css';
 import Headline from './components/Headline/Headline.js';
-import products from './products.json';
 import ProductsListContainer from './containers/ProductsListContainer.js';
 import FilterContainer from './containers/FilterContainer.js';
 import { store } from './store';

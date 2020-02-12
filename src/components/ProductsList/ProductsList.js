@@ -3,24 +3,35 @@ import PropTypes from 'prop-types';
 
 import LogRender from '../LogRender/LogRender.js';
 import List from '../List/List.js';
-import products from '../../products.json';
 import ProductCard from '../ProductCard/ProductCard.js';
+import Pagination from '../Pagination/Pagination';
 
 class ProductsList extends LogRender {
   render() {
-    const filteredProducts = products
-      .filter(item => item.price >= this.props.filters.minPrice && item.price <= this.props.filters.maxPrice)
-      .filter(item => this.props.filters.discount === 0 || (item.oldPrice && (item.oldPrice/item.price) - 1 >= this.props.filters.discount/100))
-      .filter(item => this.props.filters.categories.includes(item.category));
-
     return (
-      <List items={filteredProducts} renderItem={ProductCard} />
+      <React.Fragment>
+        <List items={this.props.productsOnPage} renderItem={ProductCard} />
+
+        {this.props.productsOnPage.length > 0 ? (
+          <Pagination 
+            currentPage={this.props.currentPage} 
+            productsPerPage={this.props.productsPerPage}
+            productsCount={this.props.filteredProducts.length}
+            goToPage={this.props.goToPage}
+          />
+        ) : ''}
+      </React.Fragment>
     );
   }
 }
 
 ProductsList.propTypes = {
-  filters: PropTypes.object
+  filters: PropTypes.object,
+  currentPage: PropTypes.number,
+  productsPerPage: PropTypes.number,
+  goToPage: PropTypes.func,
+  filteredProducts: PropTypes.array,
+  productsOnPage: PropTypes.array
 };
 
 export default ProductsList;
