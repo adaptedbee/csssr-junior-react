@@ -12,4 +12,5 @@
 /* fix ProductCard style */
 .list li div > *:nth-last-child(2) {
   display: flex;
+  align-items: center;
 }

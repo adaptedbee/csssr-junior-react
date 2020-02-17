@@ -35,6 +35,10 @@
   position: relative;
 }
 
+.product--out-of-stock {
+  color: #7e8fa4;
+}
+
 .product__status {
   position: absolute;
   top: 0;
@@ -50,6 +54,12 @@
 
   background-color: #fff;
   border-bottom-right-radius: 15px;
+}
+
+.product__status--out-of-stock {
+  color: #7e8fa4;
+
+  background-color: #f5f6fa;
 }
 
 .product__image {
@@ -73,6 +83,16 @@
 
 .product__rating-wrapper {
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.product__rating-wrapper > * {
+  margin-right: 10px;
+}
+
+.product__rating-wrapper > *:last-child {
+  margin-right: 0;
 }
 
 .product__price-wrapper {
