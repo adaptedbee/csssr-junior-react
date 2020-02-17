@@ -1,5 +1,6 @@
 import React from 'react';
 
+import RatingComponent from '../RatingComponent/RatingComponent.js';
 import './ProductPage.css';
 
 const ProductPage = () => {
@@ -26,7 +27,7 @@ const ProductPage = () => {
         <div className="product__info">
           <h2 className="product__title">Название первого товара</h2>
           <div className="product__rating-wrapper">
-            {/* RatingComponent */}
+            <RatingComponent />
           </div>
           <div className="product__price-wrapper">
             <p className="product__price">23 000 Р</p>

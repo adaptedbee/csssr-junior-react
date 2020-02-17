@@ -1,0 +1,20 @@
+.star {
+  width: 14px;
+  height: 13px;
+
+  background-size: 100% auto;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+
+.star--full {
+  background-image: url('/img/star-full.svg');
+}
+
+.star--half {
+  background-image: url('/img/star-half.svg');
+}
+
+.star--empty {
+  background-image: url('/img/star-empty.svg');
+}

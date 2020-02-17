@@ -6,7 +6,7 @@
         "img": "https://source.unsplash.com/random/800x600",
         "price": 23000,
         "maxRating": 5,
-        "rating": 3.5,
+        "rating": 1,
         "category": "Clothes"
     },
     {
@@ -16,7 +16,7 @@
         "img": "https://source.unsplash.com/random/800x600",
         "price": 14000,
         "maxRating": 5,
-        "rating": 3.5,
+        "rating": 1.5,
         "category": "Books"
     },
     {
@@ -27,7 +27,7 @@
         "price": 27000,
         "oldPrice": 30000,
         "maxRating": 5,
-        "rating": 3.5,
+        "rating": 2,
         "category": "Clothes"
     },
     {
@@ -38,7 +38,7 @@
         "price": 18000,
         "oldPrice": 23000,
         "maxRating": 5,
-        "rating": 3.5,
+        "rating": 2.5,
         "category": "Clothes"
     },
     {
@@ -48,7 +48,7 @@
         "img": "https://source.unsplash.com/random/800x600",
         "price": 135000,
         "maxRating": 5,
-        "rating": 3.5,
+        "rating": 3,
         "category": "Books"
     },
     {
@@ -68,7 +68,7 @@
         "img": "https://source.unsplash.com/random/800x600",
         "price": 23000,
         "maxRating": 5,
-        "rating": 3.5,
+        "rating": 4,
         "category": "Clothes"
     },
     {
@@ -78,7 +78,7 @@
         "img": "https://source.unsplash.com/random/800x600",
         "price": 14000,
         "maxRating": 5,
-        "rating": 3.5,
+        "rating": 4.5,
         "category": "Books"
     },
     {
@@ -89,7 +89,7 @@
         "price": 27000,
         "oldPrice": 30000,
         "maxRating": 5,
-        "rating": 3.5,
+        "rating": 5,
         "category": "Clothes"
     },
     {
@@ -100,7 +100,7 @@
         "price": 18000,
         "oldPrice": 23000,
         "maxRating": 5,
-        "rating": 3.5,
+        "rating": 4,
         "category": "Clothes"
     },
     {
@@ -110,7 +110,7 @@
         "img": "https://source.unsplash.com/random/800x600",
         "price": 135000,
         "maxRating": 5,
-        "rating": 3.5,
+        "rating": 3,
         "category": "Books"
     },
     {
@@ -120,7 +120,7 @@
         "img": "https://source.unsplash.com/random/800x600",
         "price": 5000,
         "maxRating": 5,
-        "rating": 3.5,
+        "rating": 2,
         "category": "Clothes"
     }
 ]

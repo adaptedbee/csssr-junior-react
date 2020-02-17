@@ -14,7 +14,7 @@
   height: 12px;
   margin-right: 19px;
 
-  background-image: url('img/arrow-left.svg');
+  background-image: url('/img/arrow-left.svg');
   background-size: 100% auto;
   background-position: 0 0;
   background-repeat: no-repeat;
