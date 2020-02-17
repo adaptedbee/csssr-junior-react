@@ -6,7 +6,7 @@ const ProductPage = () => {
   return (
     <article className="page">
       <header className="page__header">
-        <a className="page__back-link" href="#">
+        <a className="page__back-link" href="/">
           <span className="visually-hidden">Назад в каталог</span>
         </a>
         <h1 className="page__headline">Название первого товара</h1>
@@ -34,6 +34,13 @@ const ProductPage = () => {
           </div>
         </div>
       </section>
+
+      <img 
+        className="page__not-found-image" 
+        src="img/planet-lamp.svg"
+        width="512"
+        height="512"
+        alt="Товар не найден" />
     </article>
   );
 }
