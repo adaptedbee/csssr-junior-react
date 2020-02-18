@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductItem from 'csssr-school-product-card';
+import { Link } from 'react-router-dom';
 
 import LogRender from '../LogRender/LogRender.js';
 import RatingComponent from '../RatingComponent/RatingComponent.js';
@@ -11,17 +12,19 @@ class ProductCard extends LogRender {
     const item = this.props.item;
 
     return (
-      <ProductItem
-        key={item.id}
-        isInStock={item.isInStock}
-        img={item.img}
-        title={item.title}
-        price={formatPrice(item.price)}
-        subPriceContent={item.oldPrice ? formatPrice(item.oldPrice) : ''}
-        maxRating={item.maxRating}
-        rating={item.rating}
-        ratingComponent={RatingComponent}
-      />
+      <Link to={{pathname: `/product/${item.id}`}}>
+        <ProductItem
+          key={item.id}
+          isInStock={item.isInStock}
+          img={item.img}
+          title={item.title}
+          price={formatPrice(item.price)}
+          subPriceContent={item.oldPrice ? formatPrice(item.oldPrice) : ''}
+          maxRating={item.maxRating}
+          rating={item.rating}
+          ratingComponent={RatingComponent}
+        />
+      </Link>
     );
   }
 }

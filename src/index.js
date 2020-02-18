@@ -6,7 +6,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './index.css';
 import { store } from './store';
 import HomePage from './components/HomePage/HomePage';
-import ProductPage from './components/ProductPage/ProductPage';
+import ProductPageContainer from './containers/ProductPageContainer';
 
 class App extends React.Component {
   constructor(props) {
@@ -50,8 +50,8 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <Route path="/" component={HomePage} />
-        <Route path="/product/:id" component={ProductPage} />
+        <Route path="/" exact component={HomePage} />
+        <Route path="/product/:id" component={ProductPageContainer} />
       </BrowserRouter>
     );
   }

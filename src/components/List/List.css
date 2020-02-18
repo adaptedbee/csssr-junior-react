@@ -9,8 +9,20 @@
   justify-content: center;
 }
 
+.list li {
+  margin-right: 20px;
+}
+
+.list li:nth-child(3n) {
+  margin-right: 0;
+}
+
 /* fix ProductCard style */
 .list li div > *:nth-last-child(2) {
   display: flex;
   align-items: center;
+}
+
+.list li > a {
+  text-decoration: none;
 }
