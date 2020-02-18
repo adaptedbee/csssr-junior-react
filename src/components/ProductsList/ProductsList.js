@@ -9,6 +9,10 @@ import ProductCard from '../ProductCard/ProductCard.js';
 import Pagination from '../Pagination/Pagination';
 
 class ProductsList extends LogRender {
+  componentDidMount() {
+    this.props.history.push('/?page=1');
+  }
+
   getCurrentPage = () => {
     const params = queryString.parse(this.props.location.search);
     const pageParam = params.page;
@@ -35,6 +39,7 @@ class ProductsList extends LogRender {
 
         {productsOnPage.length > 0 ? (
           <Pagination 
+            currentPage={this.getCurrentPage()}
             productsPerPage={this.props.productsPerPage}
             productsCount={this.props.filteredProducts.length}
           />
