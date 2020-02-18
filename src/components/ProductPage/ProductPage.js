@@ -60,7 +60,7 @@ class ProductPage extends React.Component {
         ) : (
           <img 
             className="page__not-found-image" 
-            src="img/planet-lamp.svg"
+            src="/img/planet-lamp.svg"
             width="512"
             height="512"
             alt="Товар не найден" />
