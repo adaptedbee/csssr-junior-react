@@ -2,7 +2,6 @@ import { createSelector } from 'reselect';
 
 import products from '../../products.json';
 import { getFilters } from '../filters/reducer';
-import { getCurrentPage, getProductsPerPage } from '../pagination/reducer';
 
 const initialState = {
   products: products
@@ -27,16 +26,5 @@ export const getFilteredProducts = createSelector(
       .filter(item => filters.categories.includes(item.category));
   
     return filteredProducts;
-  }
-);
-
-export const getProductsOnPage = createSelector(
-  [getCurrentPage, getProductsPerPage, getFilteredProducts],
-  (currentPage, productsPerPage, filteredProducts) => {
-    const startPosition = productsPerPage*(currentPage - 1);
-    const endPosition = startPosition + productsPerPage;
-    const productsOnPage = filteredProducts.slice(startPosition, endPosition);
-  
-    return productsOnPage;
   }
 );
