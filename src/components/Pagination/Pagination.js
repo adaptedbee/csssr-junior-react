@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router';
 import queryString from 'query-string';
 
 import './Pagination.css';

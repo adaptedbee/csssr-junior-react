@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router';
 
 import RatingComponent from '../RatingComponent/RatingComponent.js';
 import './ProductPage.css';
