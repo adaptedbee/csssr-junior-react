@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import './index.css';
-import Headline from './components/Headline/Headline.js';
-import ProductsListContainer from './containers/ProductsListContainer.js';
-import FilterContainer from './containers/FilterContainer.js';
 import { store } from './store';
+import HomePage from './components/HomePage/HomePage';
+import ProductPage from './components/ProductPage/ProductPage';
 
 class App extends React.Component {
   constructor(props) {
@@ -49,19 +49,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <Headline size={1}>
-          Список товаров
-        </Headline>
-        <div className="container">
-          <div className="container__left">
-            <FilterContainer />
-          </div>
-          <div className="container__center">
-            <ProductsListContainer />
-          </div>
-        </div>
-      </React.Fragment>
+      <BrowserRouter>
+        <Route path="/" component={HomePage} />
+        <Route path="/product/:id" component={ProductPage} />
+      </BrowserRouter>
     );
   }
 }
