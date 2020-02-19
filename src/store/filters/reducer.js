@@ -10,7 +10,6 @@ const initialState = {
     minPrice: minBy(obj => obj.price, products).price,
     maxPrice: maxBy(obj => obj.price, products).price,
     discount: 0,
-    categories: productsCategories,
   },
   allCategories: productsCategories,
 };
@@ -34,25 +33,6 @@ export default function filtersReducer(state = initialState, action) {
         }
       });
     }
-    case types.UPDATE_CATEGORIES: {
-      let updatedCategories = [...state.filters.categories];
-      const categoryIndex = state.filters.categories.indexOf(action.payload.category);
-      if (categoryIndex !== -1) {
-        updatedCategories.splice(categoryIndex, 1);
-      } else {
-        updatedCategories.push(action.payload.category);
-      }
-
-      return Object.assign({}, state, {
-        filters: {
-          ...state.filters,
-          categories: updatedCategories
-        }
-      });
-
-      // const url = updatedCategories.join(',');
-      // window.history.pushState({ url }, 'title', url);
-    }
     case types.CLEAR_FILTERS: {
       return Object.assign({}, state, {
         filters: {
@@ -60,7 +40,7 @@ export default function filtersReducer(state = initialState, action) {
           minPrice: minBy(obj => obj.price, products).price,
           maxPrice: maxBy(obj => obj.price, products).price,
           discount: 0,
-          categories: state.allCategories
+          // categories: state.allCategories
         }
       });
 

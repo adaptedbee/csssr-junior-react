@@ -22,8 +22,8 @@ class Filter extends LogRender {
 
     const categories = this.getCategoriesFromUrl();
     if (!categories || categories.length === 0) {
-      const allCategories = this.props.allCategories.join(',');
-      url.searchParams.set('categories', allCategories);
+      const allCategoriesValue = this.props.allCategories.join(',');
+      url.searchParams.set('categories', allCategoriesValue);
     }
     
     const currentPage = this.getCurrentPageFromUrl();
@@ -63,7 +63,21 @@ class Filter extends LogRender {
     this.props.filtersFunctions.updateDiscount(value);
   }
   handleCategoryChange = (event) => {
-    // this.props.filtersFunctions.updateCategories(event.target.value);
+    const category = event.target.value;
+    const currentCategories = this.getCategoriesFromUrl();
+    let updatedCategories = [...currentCategories];
+    const categoryIndex = currentCategories.indexOf(category);
+    if (categoryIndex !== -1) {
+      updatedCategories.splice(categoryIndex, 1);
+    } else {
+      updatedCategories.push(category);
+    }
+
+    let url = new URL(window.location.href);
+    const updatedCategoriesValue = updatedCategories.join(',');
+    url.searchParams.set('categories', updatedCategoriesValue);
+
+    this.props.history.push(url.search);
   }
   clearFilters = () => {
     // goto
