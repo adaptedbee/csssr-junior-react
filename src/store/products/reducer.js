@@ -35,8 +35,8 @@ export const getFilteredProducts = createSelector(
   (filters, products, categories) => {
     const filteredProducts = products
       .filter(item => item.price >= filters.minPrice && item.price <= filters.maxPrice)
-      .filter(item => filters.discount === 0 || (item.oldPrice && (item.oldPrice/item.price) - 1 >= filters.discount/100))
-      .filter(item => categories.includes(item.category));
+      .filter(item => filters.discount === 0 || (item.oldPrice && (item.oldPrice/item.price) - 1 >= filters.discount/100));
+      // .filter(item => categories.includes(item.category));
   
     return filteredProducts;
   }
