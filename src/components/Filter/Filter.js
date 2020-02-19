@@ -1,6 +1,8 @@
 import React from 'react';
 import Discount from 'csssr-school-input-discount';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
+import queryString from 'query-string';
 
 import './Filter.css';
 import LogRender from '../LogRender/LogRender.js';
@@ -11,6 +13,46 @@ import withInputState from '../../hocs/withInputState.js';
 const DiscountWithState = withInputState(Discount);
 
 class Filter extends LogRender {
+  componentDidMount() {
+    this.restoreUrl();
+  }
+
+  restoreUrl = () => {
+    let url = new URL(window.location.href);
+
+    const categories = this.getCategoriesFromUrl();
+    if (!categories || categories.length === 0) {
+      const allCategories = this.props.allCategories.join(',');
+      url.searchParams.set('categories', allCategories);
+    }
+    
+    const currentPage = this.getCurrentPageFromUrl();
+    if (isNaN(currentPage)) {
+      url.searchParams.set('page', '1');
+    }
+
+    this.props.history.push(url.search);
+  }
+
+  getCategoriesFromUrl = () => {
+    const params = queryString.parse(this.props.location.search);
+    const categoriesParam = params.categories;
+    if (!categoriesParam) {
+      return [];
+    }
+    const categories = categoriesParam.split(',');
+
+    return categories;
+  }
+
+  getCurrentPageFromUrl = () => {
+    const params = queryString.parse(this.props.location.search);
+    const pageParam = params.page;
+    const currentPage = parseInt(pageParam, 10);
+
+    return currentPage;
+  }
+
   handleMinPriceChange = (value) => {
     this.props.filtersFunctions.updatePriceFilter(value, this.props.filters.maxPrice);
   }
@@ -21,13 +63,16 @@ class Filter extends LogRender {
     this.props.filtersFunctions.updateDiscount(value);
   }
   handleCategoryChange = (event) => {
-    this.props.filtersFunctions.updateCategories(event.target.value);
+    // this.props.filtersFunctions.updateCategories(event.target.value);
   }
   clearFilters = () => {
+    // goto
     this.props.filtersFunctions.clearFilters();
   }
 
   render() {
+    const categories = this.getCategoriesFromUrl();
+    
     return (
       <form className="filter-form">
         <div className="filter-form__section">
@@ -64,7 +109,7 @@ class Filter extends LogRender {
               <React.Fragment key={index}>
                 <input 
                   id={category} type="checkbox" value={category}
-                  checked={this.props.filters.categories.includes(category)}
+                  checked={categories.includes(category)}
                   onChange={this.handleCategoryChange}
                   className="visually-hidden filter-form__checkbox" />
                 <label htmlFor={category} className="filter-form__checkbox-label">
@@ -88,7 +133,11 @@ class Filter extends LogRender {
 Filter.propTypes = {
   filters: PropTypes.object,
   allCategories: PropTypes.arrayOf(PropTypes.string),
-  filtersFunctions: PropTypes.objectOf(PropTypes.func)
+  filtersFunctions: PropTypes.objectOf(PropTypes.func),
+  location: PropTypes.object,
+  history: PropTypes.object
 };
 
-export default Filter;
+const FilterWithRouter = withRouter(Filter);
+
+export default FilterWithRouter;
