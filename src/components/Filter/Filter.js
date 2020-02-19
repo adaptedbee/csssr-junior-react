@@ -80,8 +80,12 @@ class Filter extends LogRender {
     this.props.history.push(url.search);
   }
   clearFilters = () => {
-    // goto
     this.props.filtersFunctions.clearFilters();
+
+    let url = new URL(window.location.href);
+    const allCategoriesValue = this.props.allCategories.join(',');
+    url.searchParams.set('categories', allCategoriesValue);
+    this.props.history.push(url.search);
   }
 
   render() {

@@ -40,12 +40,8 @@ export default function filtersReducer(state = initialState, action) {
           minPrice: minBy(obj => obj.price, products).price,
           maxPrice: maxBy(obj => obj.price, products).price,
           discount: 0,
-          // categories: state.allCategories
         }
       });
-
-      // const url = this.state.allCategories.join(',');
-      // window.history.replaceState({ url }, 'title', url);
     }
     default: {
       return state;

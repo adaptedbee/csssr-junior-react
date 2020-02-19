@@ -9,44 +9,6 @@ import HomePage from './components/HomePage/HomePage';
 import ProductPageContainer from './containers/ProductPageContainer';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    // const allProductsCategories = products.map(item => item.category);
-    // const productsCategories = [...new Set(allProductsCategories)];
-
-    // const url = productsCategories.join(',');
-    // window.history.replaceState({ url }, 'title', url);
-
-    // this.state = {
-    //   filters: {
-    //     minPrice: minBy(obj => obj.price, products).price,
-    //     maxPrice: maxBy(obj => obj.price, products).price,
-    //     discount: 0,
-    //     categories: productsCategories,
-    //   },
-    //   allCategories: productsCategories
-    // };
-  }
-
-  // componentDidMount() {
-  //   window.addEventListener('popstate', this.setFromHistory);
-  // }
-  // componentWillUnmount() {
-  //   window.removeEventListener('popstate', this.setFromHistory);
-  // }
-  
-  // setFromHistory = (event) => {
-  //   const categoriesFromUrl = event.state['url'].split(',');
-
-  //   this.setState(prevState => ({
-  //     filters: {
-  //       ...prevState.filters,
-  //       categories: categoriesFromUrl
-  //     }
-  //   }));
-  // };
-
   render() {
     return (
       <BrowserRouter>
