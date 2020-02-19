@@ -10,7 +10,11 @@ import Pagination from '../Pagination/Pagination';
 
 class ProductsList extends LogRender {
   componentDidMount() {
-    this.props.history.push('/?page=1');
+    const currentPage = this.getCurrentPage();
+
+    if (isNaN(currentPage)) {
+      this.props.history.push('/?page=1');
+    }
   }
 
   getCurrentPage = () => {

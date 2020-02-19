@@ -18,7 +18,10 @@ class ProductPage extends React.Component {
     return (
       <article className="page">
         <header className="page__header">
-          <Link to="/" className="page__back-link">
+          <Link 
+            to={{}}
+            onClick={this.props.history.goBack}
+            className="page__back-link">
             <span className="visually-hidden">Назад в каталог</span>
           </Link>
           <h1 className="page__headline">
@@ -72,7 +75,8 @@ class ProductPage extends React.Component {
 
 ProductPage.propTypes = {
   products: PropTypes.array,
-  match: PropTypes.object
+  match: PropTypes.object, 
+  history: PropTypes.object
 };
 
 const ProductPageWithRouter = withRouter(ProductPage);
