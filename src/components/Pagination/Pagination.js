@@ -19,10 +19,12 @@ class Pagination extends React.Component {
   }
 
   getLinkByPage = (page) => {
-    return queryString.stringify({
-      ...queryString.parse(this.props.location.search), 
-      page: page
-    });
+    return {
+      search: queryString.stringify({
+        ...queryString.parse(this.props.location.search), 
+        page: page
+      })
+    };
   }
 
   render() {
