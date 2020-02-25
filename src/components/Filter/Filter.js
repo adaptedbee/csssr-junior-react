@@ -18,20 +18,22 @@ class Filter extends LogRender {
   }
 
   restoreUrl = () => {
-    let url = new URL(window.location.href);
+    let urlQueryObject = {...queryString.parse(this.props.location.search)};
 
     const categories = this.getCategoriesFromUrl();
     if (!categories || categories.length === 0) {
       const allCategoriesValue = this.props.allCategories.join(',');
-      url.searchParams.set('categories', allCategoriesValue);
+      urlQueryObject.categories = allCategoriesValue;
     }
     
     const currentPage = this.getCurrentPageFromUrl();
     if (isNaN(currentPage)) {
-      url.searchParams.set('page', '1');
+      urlQueryObject.page = '1';
     }
 
-    this.props.history.push(url.search);
+    this.props.history.push({
+      search: queryString.stringify(urlQueryObject)
+    });
   }
 
   getCategoriesFromUrl = () => {
@@ -40,7 +42,7 @@ class Filter extends LogRender {
     if (!categoriesParam) {
       return [];
     }
-    const categories = categoriesParam.split(',');
+    const categories = categoriesParam.split('%2C');
 
     return categories;
   }

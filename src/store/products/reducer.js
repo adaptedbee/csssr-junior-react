@@ -24,7 +24,7 @@ export const getCategories = (state) => {
   const params = queryString.parse(state.router.location.search);
   const categoriesParam = params.categories;
   if (categoriesParam) {
-    categories = categoriesParam.split(',');
+    categories = categoriesParam.split('%2C');
   }
 
   return categories;
