@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-import RatingComponent from '../RatingComponent/RatingComponent.js';
+import RatingComponent from '../../components/RatingComponent/RatingComponent.js';
 import './ProductPage.css';
 import formatPrice from '../../utils/utils';
 

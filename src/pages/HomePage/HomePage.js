@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './HomePage.css';
-import Headline from '../Headline/Headline.js';
+import Headline from '../../components/Headline/Headline.js';
 import ProductsListContainer from '../../containers/ProductsListContainer.js';
 import FilterContainer from '../../containers/FilterContainer.js';
 

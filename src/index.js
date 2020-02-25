@@ -6,7 +6,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import './index.css';
 import { store, history } from './store';
-import HomePage from './components/HomePage/HomePage';
+import HomePage from './pages/HomePage/HomePage';
 import ProductPageContainer from './containers/ProductPageContainer';
 
 class App extends React.Component {

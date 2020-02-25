@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ProductPage from '../components/ProductPage/ProductPage';
+import ProductPage from '../pages/ProductPage/ProductPage';
 
 import { getProducts } from '../store/products/reducer';
 
