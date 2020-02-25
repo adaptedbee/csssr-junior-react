@@ -11,13 +11,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
 const ProductsListContainer = connect(
   mapStateToProps, 
-  mapDispatchToProps
+  null
 )(ProductsList);
 
 export default ProductsListContainer;

@@ -9,13 +9,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
 const ProductPageContainer = connect(
   mapStateToProps, 
-  mapDispatchToProps
+  null
 )(ProductPage);
 
 export default ProductPageContainer;
