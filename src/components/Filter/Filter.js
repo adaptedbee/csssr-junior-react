@@ -18,21 +18,21 @@ class Filter extends LogRender {
   }
 
   restoreUrl = () => {
-    let urlQueryObject = {...queryString.parse(this.props.location.search)};
+    let urlSearchObject = {...queryString.parse(this.props.location.search)};
 
     const categories = this.getCategoriesFromUrl();
     if (!categories || categories.length === 0) {
       const allCategoriesValue = this.props.allCategories.join(',');
-      urlQueryObject.categories = allCategoriesValue;
+      urlSearchObject.categories = allCategoriesValue;
     }
     
     const currentPage = this.getCurrentPageFromUrl();
     if (isNaN(currentPage)) {
-      urlQueryObject.page = '1';
+      urlSearchObject.page = '1';
     }
 
     this.props.history.push({
-      search: queryString.stringify(urlQueryObject)
+      search: queryString.stringify(urlSearchObject)
     });
   }
 
@@ -42,8 +42,7 @@ class Filter extends LogRender {
     if (!categoriesParam) {
       return [];
     }
-    const categories = categoriesParam.split('%2C');
-
+    const categories = categoriesParam.split(',');
     return categories;
   }
 
@@ -75,11 +74,13 @@ class Filter extends LogRender {
       updatedCategories.push(category);
     }
 
-    let url = new URL(window.location.href);
+    let urlSearchObject = {...queryString.parse(this.props.location.search)};
     const updatedCategoriesValue = updatedCategories.join(',');
-    url.searchParams.set('categories', updatedCategoriesValue);
+    urlSearchObject.categories = updatedCategoriesValue;
 
-    this.props.history.push(url.search);
+    this.props.history.push({
+      search: queryString.stringify(urlSearchObject)
+    });
   }
   clearFilters = () => {
     this.props.filtersFunctions.clearFilters();
