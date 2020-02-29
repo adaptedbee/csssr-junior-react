@@ -65,6 +65,15 @@ class Filter extends LogRender {
     this.props.history.push(url.search);
   }
 
+  getLinkToCategory = (category) => {
+    return {
+      search: queryString.stringify({
+        ...queryString.parse(this.props.location.search), 
+        categories: category
+      })
+    };
+  }
+
   render() {
     const categories = this.getCategoriesFromUrl();
     
@@ -101,16 +110,14 @@ class Filter extends LogRender {
           </Headline>
           <div className="filter-form__checkbox-labels">
             {this.props.allCategories.map((category, index) => 
-              <React.Fragment key={index}>
-                <input 
-                  id={category} type="checkbox" value={category}
-                  checked={categories.includes(category)}
-                  onChange={this.handleCategoryChange}
-                  className="visually-hidden filter-form__checkbox" />
-                <label htmlFor={category} className="filter-form__checkbox-label">
-                  {category}
-                </label>
-              </React.Fragment>
+              <Link 
+                key={index}
+                // onClick={this.handleCategoryChange}
+                to={this.getLinkToCategory(category)}
+                className={categories.includes(category) ? 'filter-form__checkbox-link filter-form__checkbox-link--checked' : 'filter-form__checkbox-link'} 
+              >
+                {category}
+              </Link>
             )}
           </div>
         </div>

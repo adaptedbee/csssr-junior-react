@@ -44,7 +44,8 @@
   flex-wrap: wrap;
 }
 
-.filter-form__checkbox-label {
+.filter-form__checkbox-label,
+.filter-form__checkbox-link {
   box-sizing: border-box;
   padding: 8px 16px;
   margin-right: 16px;
@@ -52,6 +53,7 @@
   font-size: 14px;
   line-height: 14px;
   color: #7E8FA4;
+  text-decoration: none;
 
   background-color: #FFFFFF;
   border: 1px solid #7E8FA4;
@@ -59,11 +61,13 @@
   cursor: pointer;
 }
 
-.filter-form__checkbox-label:last-child {
+.filter-form__checkbox-label:last-child,
+.filter-form__checkbox-link:last-child {
   margin-right: 0;
 }
 
-.filter-form__checkbox:checked + .filter-form__checkbox-label {
+.filter-form__checkbox:checked + .filter-form__checkbox-label,
+.filter-form__checkbox-link--checked {
   color: #FFFFFF;
   
   background-color: #323C48;
