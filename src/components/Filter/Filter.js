@@ -37,8 +37,11 @@ class Filter extends LogRender {
   handleDiscountChange = (value) => {
     this.props.filtersFunctions.updateDiscount(value);
   }
-  handleCategoryChange = (event) => {
-    const category = event.target.value;
+  clearFilters = () => {
+    this.props.filtersFunctions.clearFilters();
+  }
+
+  getLinkToCategory = (category) => {
     const currentCategories = this.getCategoriesFromUrl();
     let updatedCategories = [...currentCategories];
     const categoryIndex = currentCategories.indexOf(category);
@@ -47,24 +50,12 @@ class Filter extends LogRender {
     } else {
       updatedCategories.push(category);
     }
-
-    let urlSearchObject = {...queryString.parse(this.props.location.search)};
     const updatedCategoriesValue = updatedCategories.join(',');
-    urlSearchObject.categories = updatedCategoriesValue;
 
-    this.props.history.push({
-      search: queryString.stringify(urlSearchObject)
-    });
-  }
-  clearFilters = () => {
-    this.props.filtersFunctions.clearFilters();
-  }
-
-  getLinkToCategory = (category) => {
     return {
       search: queryString.stringify({
         ...queryString.parse(this.props.location.search), 
-        categories: category
+        categories: updatedCategoriesValue
       })
     };
   }
@@ -107,7 +98,6 @@ class Filter extends LogRender {
             {this.props.allCategories.map((category, index) => 
               <Link 
                 key={index}
-                // onClick={this.handleCategoryChange}
                 to={this.getLinkToCategory(category)}
                 className={categories.includes(category) ? 'filter-form__checkbox-link filter-form__checkbox-link--checked' : 'filter-form__checkbox-link'} 
               >
