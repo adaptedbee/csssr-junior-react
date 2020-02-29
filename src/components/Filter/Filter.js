@@ -13,45 +13,18 @@ import withInputState from '../../hocs/withInputState.js';
 const DiscountWithState = withInputState(Discount);
 
 class Filter extends LogRender {
-  componentDidMount() {
-    this.restoreUrl();
-  }
-
-  restoreUrl = () => {
-    let urlSearchObject = {...queryString.parse(this.props.location.search)};
-
-    const categories = this.getCategoriesFromUrl();
-    if (!categories || categories.length === 0) {
-      const allCategoriesValue = this.props.allCategories.join(',');
-      urlSearchObject.categories = allCategoriesValue;
-    }
-    
-    const currentPage = this.getCurrentPageFromUrl();
-    if (isNaN(currentPage)) {
-      urlSearchObject.page = '1';
-    }
-
-    this.props.history.push({
-      search: queryString.stringify(urlSearchObject)
-    });
-  }
-
   getCategoriesFromUrl = () => {
     const params = queryString.parse(this.props.location.search);
     const categoriesParam = params.categories;
-    if (!categoriesParam) {
+
+    if (categoriesParam === '') {
       return [];
+    }
+    if (!categoriesParam) {
+      return this.props.allCategories;
     }
     const categories = categoriesParam.split(',');
     return categories;
-  }
-
-  getCurrentPageFromUrl = () => {
-    const params = queryString.parse(this.props.location.search);
-    const pageParam = params.page;
-    const currentPage = parseInt(pageParam, 10);
-
-    return currentPage;
   }
 
   handleMinPriceChange = (value) => {

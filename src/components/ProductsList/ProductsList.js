@@ -9,23 +9,18 @@ import ProductCard from '../ProductCard/ProductCard.js';
 import Pagination from '../Pagination/Pagination';
 
 class ProductsList extends LogRender {
-  componentDidMount() {
-    // const currentPage = this.getCurrentPage();
-
-    // if (isNaN(currentPage)) {
-    //   this.props.history.push('/?page=1');
-    // }
-  }
-
-  getCurrentPage = () => {
+  getCurrentPageFromUrl = () => {
     const params = queryString.parse(this.props.location.search);
     const pageParam = params.page;
+    if (!pageParam) {
+      return 1;
+    }
     const currentPage = parseInt(pageParam, 10);
 
     return currentPage;
   }
   getProductsOnPage = () => {
-    const currentPage = this.getCurrentPage();
+    const currentPage = this.getCurrentPageFromUrl();
 
     const startPosition = this.props.productsPerPage*(currentPage - 1);
     const endPosition = startPosition + this.props.productsPerPage;
@@ -43,7 +38,7 @@ class ProductsList extends LogRender {
 
         {productsOnPage.length > 0 ? (
           <Pagination 
-            currentPage={this.getCurrentPage()}
+            currentPage={this.getCurrentPageFromUrl()}
             productsPerPage={this.props.productsPerPage}
             productsCount={this.props.filteredProducts.length}
           />
