@@ -3,6 +3,7 @@ import Discount from 'csssr-school-input-discount';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import queryString from 'query-string';
+import { Link } from 'react-router-dom';
 
 import './Filter.css';
 import LogRender from '../LogRender/LogRender.js';
@@ -113,12 +114,13 @@ class Filter extends LogRender {
             )}
           </div>
         </div>
-        <button 
-          onClick={this.clearFilters} type="button" 
+        <Link 
+          to="/"
+          onClick={this.clearFilters}
           className="filter-form__button filter-form__button--secondary"
         >
           Сбросить фильтры
-        </button>
+        </Link>
       </form>
     );
   }

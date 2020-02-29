@@ -16,6 +16,7 @@
 }
 
 .filter-form__button {
+  display: block;
   width: 100%;
   box-sizing: border-box;
   padding-top: 9px;
@@ -24,6 +25,8 @@
   font-size: 14px;
   line-height: 14px;
   color: #FFFFFF;
+  text-decoration: none;
+  text-align: center;
 
   background-color: #323C48;
   border: none;
