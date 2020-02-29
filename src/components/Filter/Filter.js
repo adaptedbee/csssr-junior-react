@@ -58,11 +58,6 @@ class Filter extends LogRender {
   }
   clearFilters = () => {
     this.props.filtersFunctions.clearFilters();
-
-    let url = new URL(window.location.href);
-    const allCategoriesValue = this.props.allCategories.join(',');
-    url.searchParams.set('categories', allCategoriesValue);
-    this.props.history.push(url.search);
   }
 
   getLinkToCategory = (category) => {
