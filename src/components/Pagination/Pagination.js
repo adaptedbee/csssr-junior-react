@@ -11,13 +11,6 @@ class Pagination extends React.Component {
     return Math.ceil(this.props.productsCount/this.props.productsPerPage);
   }
 
-  goToPage = (event, page) => {
-    if (page <= 0 || page > this.getPagesCount()) {
-      event.preventDefault();
-      return;
-    }
-  }
-
   getLinkToPage = (page) => {
     return {
       search: queryString.stringify({
@@ -30,21 +23,21 @@ class Pagination extends React.Component {
   render() {
     return (
       <ul className="pagination"> 
-        <li className="pagination__item pagination__item--prev">
-          <Link 
-            to={this.getLinkToPage(this.props.currentPage - 1)}
-            onClick={(event) => this.goToPage(event, this.props.currentPage - 1)}
-            className="pagination__button"
-          >
-            Назад
-          </Link>
-        </li>
+        {this.props.currentPage > 1 ? (
+          <li className="pagination__item pagination__item--prev">
+            <Link 
+              to={this.getLinkToPage(this.props.currentPage - 1)}
+              className="pagination__button"
+            >
+              Назад
+            </Link>
+          </li>
+        ) : ''}
 
         {this.props.currentPage > 1 ? (
           <li className="pagination__item">
             <Link 
               to={this.getLinkToPage(this.props.currentPage - 1)}
-              onClick={(event) => this.goToPage(event, this.props.currentPage - 1)}
               className="pagination__button"
             >
               {this.props.currentPage - 1}
@@ -62,7 +55,6 @@ class Pagination extends React.Component {
           <li className="pagination__item">
             <Link 
               to={this.getLinkToPage(this.props.currentPage + 1)}
-              onClick={(event) => this.goToPage(event, this.props.currentPage + 1)}
               className="pagination__button"
             >
               {this.props.currentPage + 1}
@@ -74,7 +66,6 @@ class Pagination extends React.Component {
           <li className="pagination__item">
             <Link 
               to={this.getLinkToPage(this.props.currentPage + 2)}
-              onClick={(event) => this.goToPage(event, this.props.currentPage + 2)}
               className="pagination__button"
             >
               ...
@@ -85,7 +76,6 @@ class Pagination extends React.Component {
           <li className="pagination__item">
             <Link 
               to={this.getLinkToPage(this.getPagesCount())}
-              onClick={(event) => this.goToPage(event, this.getPagesCount())}
               className="pagination__button"
             >
               {this.getPagesCount()}
@@ -93,15 +83,16 @@ class Pagination extends React.Component {
           </li>
         ) : ''}
   
-        <li className="pagination__item pagination__item--next">
-          <Link 
-            to={this.getLinkToPage(this.props.currentPage + 1)}
-            onClick={(event) => this.goToPage(event, this.props.currentPage + 1)}
-            className="pagination__button"
-          >
-            Вперёд
-          </Link>
-        </li>
+        {this.props.currentPage < this.getPagesCount() ? (
+          <li className="pagination__item pagination__item--next">
+            <Link 
+              to={this.getLinkToPage(this.props.currentPage + 1)}
+              className="pagination__button"
+            >
+              Вперёд
+            </Link>
+          </li>
+        ) : ''}
       </ul>
     );
   }
