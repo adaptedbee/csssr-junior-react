@@ -22,7 +22,7 @@ class Filter extends LogRender {
       return [];
     }
     if (!categoriesParam) {
-      return this.props.allCategories;
+      return null;
     }
     const categories = categoriesParam.split(',');
     return categories;
@@ -42,7 +42,7 @@ class Filter extends LogRender {
   }
 
   getLinkToCategory = (category) => {
-    const currentCategories = this.getCategoriesFromUrl();
+    const currentCategories = this.getCategoriesFromUrl() || [];
     let updatedCategories = [...currentCategories];
     const categoryIndex = currentCategories.indexOf(category);
     if (categoryIndex !== -1) {
@@ -99,7 +99,7 @@ class Filter extends LogRender {
               <Link 
                 key={index}
                 to={this.getLinkToCategory(category)}
-                className={categories.includes(category) ? 'filter-form__checkbox-link filter-form__checkbox-link--checked' : 'filter-form__checkbox-link'} 
+                className={categories && categories.includes(category) ? 'filter-form__checkbox-link filter-form__checkbox-link--checked' : 'filter-form__checkbox-link'} 
               >
                 {category}
               </Link>

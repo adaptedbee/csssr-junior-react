@@ -19,13 +19,16 @@ export default function productsReducer(state = initialState, action) {
 export const getProducts = (state) => state.products.products;
 
 export const getCategories = (state) => {
-  let categories = [];
   const params = queryString.parse(state.router.location.search);
   const categoriesParam = params.categories;
-  if (categoriesParam) {
-    categories = categoriesParam.split(',');
+  if (categoriesParam === '') {
+    return [];
+  }
+  if (!categoriesParam) {
+    return null;
   }
 
+  const categories = categoriesParam.split(',');
   return categories;
 }
 
@@ -36,7 +39,7 @@ export const getFilteredProducts = createSelector(
       .filter(item => item.price >= filters.minPrice && item.price <= filters.maxPrice)
       .filter(item => filters.discount === 0 || (item.oldPrice && (item.oldPrice/item.price) - 1 >= filters.discount/100))
       .filter(item => {
-        if (categories.length > 0) {
+        if (categories && categories.length > 0) {
           return categories.includes(item.category);
         } else {
           return true;
