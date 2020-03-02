@@ -1,8 +1,7 @@
 import { createSelector } from 'reselect';
-import queryString from 'query-string';
 
 import products from '../../products.json';
-import { getFilters } from '../filters/reducer';
+import { getFilters, getCategories } from '../filters/reducer';
 
 const initialState = {
   products: products
@@ -17,20 +16,6 @@ export default function productsReducer(state = initialState, action) {
 }
 
 export const getProducts = (state) => state.products.products;
-
-export const getCategories = (state) => {
-  const params = queryString.parse(state.router.location.search);
-  const categoriesParam = params.categories;
-  if (categoriesParam === '') {
-    return [];
-  }
-  if (!categoriesParam) {
-    return null;
-  }
-
-  const categories = categoriesParam.split(',');
-  return categories;
-}
 
 export const getFilteredProducts = createSelector(
   [getFilters, getProducts, getCategories],

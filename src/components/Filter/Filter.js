@@ -14,20 +14,6 @@ import withInputState from '../../hocs/withInputState.js';
 const DiscountWithState = withInputState(Discount);
 
 class Filter extends LogRender {
-  getCategoriesFromUrl = () => {
-    const params = queryString.parse(this.props.location.search);
-    const categoriesParam = params.categories;
-
-    if (categoriesParam === '') {
-      return [];
-    }
-    if (!categoriesParam) {
-      return null;
-    }
-    const categories = categoriesParam.split(',');
-    return categories;
-  }
-
   handleMinPriceChange = (value) => {
     this.props.filtersFunctions.updatePriceFilter(value, this.props.filters.maxPrice);
   }
@@ -42,7 +28,7 @@ class Filter extends LogRender {
   }
 
   getLinkToCategory = (category) => {
-    const currentCategories = this.getCategoriesFromUrl() || [];
+    const currentCategories = this.props.categories || [];
     let updatedCategories = [...currentCategories];
     const categoryIndex = currentCategories.indexOf(category);
     if (categoryIndex !== -1) {
@@ -61,8 +47,6 @@ class Filter extends LogRender {
   }
 
   render() {
-    const categories = this.getCategoriesFromUrl();
-    
     return (
       <form className="filter-form">
         <div className="filter-form__section">
@@ -99,7 +83,7 @@ class Filter extends LogRender {
               <Link 
                 key={index}
                 to={this.getLinkToCategory(category)}
-                className={categories && categories.includes(category) ? 'filter-form__checkbox-link filter-form__checkbox-link--checked' : 'filter-form__checkbox-link'} 
+                className={this.props.categories && this.props.categories.includes(category) ? 'filter-form__checkbox-link filter-form__checkbox-link--checked' : 'filter-form__checkbox-link'} 
               >
                 {category}
               </Link>
@@ -121,6 +105,7 @@ class Filter extends LogRender {
 Filter.propTypes = {
   filters: PropTypes.object,
   allCategories: PropTypes.arrayOf(PropTypes.string),
+  categories: PropTypes.arrayOf(PropTypes.string),
   filtersFunctions: PropTypes.objectOf(PropTypes.func),
   location: PropTypes.object,
   history: PropTypes.object

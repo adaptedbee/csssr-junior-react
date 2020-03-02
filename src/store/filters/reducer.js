@@ -1,4 +1,5 @@
 import { minBy, maxBy } from 'csssr-school-utils';
+import queryString from 'query-string';
 
 import products from '../../products.json';
 import * as types from './actionTypes';
@@ -51,3 +52,17 @@ export default function filtersReducer(state = initialState, action) {
 
 export const getFilters = (state) => state.filters.filters;
 export const getAllCategories = (state) => state.filters.allCategories;
+
+export const getCategories = (state) => {
+  const params = queryString.parse(state.router.location.search);
+  const categoriesParam = params.categories;
+  if (categoriesParam === '') {
+    return [];
+  }
+  if (!categoriesParam) {
+    return null;
+  }
+
+  const categories = categoriesParam.split(',');
+  return categories;
+}
