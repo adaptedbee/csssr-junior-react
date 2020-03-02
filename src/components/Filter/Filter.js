@@ -37,10 +37,10 @@ class Filter extends LogRender {
       updatedCategories.push(category);
     }
     const updatedCategoriesValue = updatedCategories.join(',');
-
+    
     return {
       search: queryString.stringify({
-        ...queryString.parse(this.props.location.search), 
+        ...this.props.urlSearchParams, 
         categories: updatedCategoriesValue
       })
     };
@@ -107,8 +107,7 @@ Filter.propTypes = {
   allCategories: PropTypes.arrayOf(PropTypes.string),
   categories: PropTypes.arrayOf(PropTypes.string),
   filtersFunctions: PropTypes.objectOf(PropTypes.func),
-  location: PropTypes.object,
-  history: PropTypes.object
+  urlSearchParams: PropTypes.object
 };
 
 const FilterWithRouter = withRouter(Filter);

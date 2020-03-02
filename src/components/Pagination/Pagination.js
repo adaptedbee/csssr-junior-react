@@ -14,7 +14,7 @@ class Pagination extends React.Component {
   getLinkToPage = (page) => {
     return {
       search: queryString.stringify({
-        ...queryString.parse(this.props.location.search), 
+        ...this.props.urlSearchParams, 
         page: page
       })
     };
@@ -102,8 +102,7 @@ Pagination.propTypes = {
   currentPage: PropTypes.number,
   productsPerPage: PropTypes.number,
   productsCount: PropTypes.number,
-  location: PropTypes.object,
-  history: PropTypes.object
+  urlSearchParams: PropTypes.object
 };
 
 const PaginationWithRouter = withRouter(Pagination);

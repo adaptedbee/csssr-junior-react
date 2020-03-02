@@ -18,6 +18,7 @@ class ProductsList extends LogRender {
             currentPage={this.props.currentPage}
             productsPerPage={this.props.productsPerPage}
             productsCount={this.props.filteredProducts.length}
+            urlSearchParams={this.props.urlSearchParams}
           />
         ) : ''}
       </React.Fragment>
@@ -30,7 +31,7 @@ ProductsList.propTypes = {
   filteredProducts: PropTypes.array,
   currentPage: PropTypes.number,
   productsOnPage: PropTypes.array,
-  location: PropTypes.object
+  urlSearchParams: PropTypes.object
 };
 
 const ProductsListWithRouter = withRouter(ProductsList);
