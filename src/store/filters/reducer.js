@@ -1,4 +1,6 @@
 import { minBy, maxBy } from 'csssr-school-utils';
+import queryString from 'query-string';
+import { createSelector } from 'reselect';
 
 import products from '../../products.json';
 import * as types from './actionTypes';
@@ -10,7 +12,6 @@ const initialState = {
     minPrice: minBy(obj => obj.price, products).price,
     maxPrice: maxBy(obj => obj.price, products).price,
     discount: 0,
-    categories: productsCategories,
   },
   allCategories: productsCategories,
 };
@@ -34,25 +35,6 @@ export default function filtersReducer(state = initialState, action) {
         }
       });
     }
-    case types.UPDATE_CATEGORIES: {
-      let updatedCategories = [...state.filters.categories];
-      const categoryIndex = state.filters.categories.indexOf(action.payload.category);
-      if (categoryIndex !== -1) {
-        updatedCategories.splice(categoryIndex, 1);
-      } else {
-        updatedCategories.push(action.payload.category);
-      }
-
-      return Object.assign({}, state, {
-        filters: {
-          ...state.filters,
-          categories: updatedCategories
-        }
-      });
-
-      // const url = updatedCategories.join(',');
-      // window.history.pushState({ url }, 'title', url);
-    }
     case types.CLEAR_FILTERS: {
       return Object.assign({}, state, {
         filters: {
@@ -60,12 +42,8 @@ export default function filtersReducer(state = initialState, action) {
           minPrice: minBy(obj => obj.price, products).price,
           maxPrice: maxBy(obj => obj.price, products).price,
           discount: 0,
-          categories: state.allCategories
         }
       });
-
-      // const url = this.state.allCategories.join(',');
-      // window.history.replaceState({ url }, 'title', url);
     }
     default: {
       return state;
@@ -75,3 +53,24 @@ export default function filtersReducer(state = initialState, action) {
 
 export const getFilters = (state) => state.filters.filters;
 export const getAllCategories = (state) => state.filters.allCategories;
+
+export const getUrlSearchParams = (state) => {
+  return queryString.parse(state.router.location.search);
+}
+
+export const getCategories = createSelector(
+  [getUrlSearchParams],
+  (params) => {
+    const categoriesParam = params.categories;
+    if (categoriesParam === '') {
+      return [];
+    }
+    if (!categoriesParam) {
+      return null;
+    }
+
+    const categories = categoriesParam.split(',');
+    return categories;
+  }
+);
+

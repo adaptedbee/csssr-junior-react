@@ -1,30 +1,23 @@
 import { connect } from 'react-redux';
 import ProductsList from '../components/ProductsList/ProductsList.js';
 
-import { goToPage } from '../store/pagination/actions';
-import { getFilters } from '../store/filters/reducer';
-import { getCurrentPage, getProductsPerPage } from '../store/pagination/reducer';
-import { getFilteredProducts, getProductsOnPage } from '../store/products/reducer';
+import { getProductsPerPage, getCurrentPage, getProductsOnPage } from '../store/pagination/reducer';
+import { getFilteredProducts } from '../store/products/reducer';
+import { getUrlSearchParams } from '../store/filters/reducer.js';
 
 const mapStateToProps = (state) => {
   return {
-    filters: getFilters(state),
-    currentPage: getCurrentPage(state),
     productsPerPage: getProductsPerPage(state),
     filteredProducts: getFilteredProducts(state),
-    productsOnPage: getProductsOnPage(state)
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    goToPage: (page) => dispatch(goToPage(page))
+    currentPage: getCurrentPage(state),
+    productsOnPage: getProductsOnPage(state),
+    urlSearchParams: getUrlSearchParams(state)
   };
 };
 
 const ProductsListContainer = connect(
   mapStateToProps, 
-  mapDispatchToProps
+  null
 )(ProductsList);
 
 export default ProductsListContainer;

@@ -30,11 +30,11 @@
   box-sizing: border-box;
   padding: 8px 0px;
 
-  font-family: "Open Sans", Arial, sans-serif;
   font-size: 14px;
   line-height: 16px;
   color: #7E8FA4;
   text-align: center;
+  text-decoration: none;
 
   background-color: #FFFFFF;
   border: 1px solid #C5CFDE;

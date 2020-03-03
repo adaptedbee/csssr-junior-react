@@ -9,7 +9,6 @@
 }
 
 .filter-form__label {
-  font-family: "Open Sans", Arial, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 14px;
@@ -17,15 +16,17 @@
 }
 
 .filter-form__button {
+  display: block;
   width: 100%;
   box-sizing: border-box;
   padding-top: 9px;
   padding-bottom: 9px;
 
-  font-family: "Open Sans", Arial, sans-serif;
   font-size: 14px;
   line-height: 14px;
   color: #FFFFFF;
+  text-decoration: none;
+  text-align: center;
 
   background-color: #323C48;
   border: none;
@@ -43,15 +44,16 @@
   flex-wrap: wrap;
 }
 
-.filter-form__checkbox-label {
+.filter-form__checkbox-label,
+.filter-form__checkbox-link {
   box-sizing: border-box;
   padding: 8px 16px;
   margin-right: 16px;
 
-  font-family: "Open Sans", Arial, sans-serif;
   font-size: 14px;
   line-height: 14px;
   color: #7E8FA4;
+  text-decoration: none;
 
   background-color: #FFFFFF;
   border: 1px solid #7E8FA4;
@@ -59,11 +61,13 @@
   cursor: pointer;
 }
 
-.filter-form__checkbox-label:last-child {
+.filter-form__checkbox-label:last-child,
+.filter-form__checkbox-link:last-child {
   margin-right: 0;
 }
 
-.filter-form__checkbox:checked + .filter-form__checkbox-label {
+.filter-form__checkbox:checked + .filter-form__checkbox-label,
+.filter-form__checkbox-link--checked {
   color: #FFFFFF;
   
   background-color: #323C48;

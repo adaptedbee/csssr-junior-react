@@ -1,6 +1,9 @@
 import React from 'react';
 import Discount from 'csssr-school-input-discount';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
+import queryString from 'query-string';
+import { Link } from 'react-router-dom';
 
 import './Filter.css';
 import LogRender from '../LogRender/LogRender.js';
@@ -20,11 +23,28 @@ class Filter extends LogRender {
   handleDiscountChange = (value) => {
     this.props.filtersFunctions.updateDiscount(value);
   }
-  handleCategoryChange = (event) => {
-    this.props.filtersFunctions.updateCategories(event.target.value);
-  }
   clearFilters = () => {
     this.props.filtersFunctions.clearFilters();
+  }
+
+  getLinkToCategory = (category) => {
+    const currentCategories = this.props.categories || [];
+    let updatedCategories = [...currentCategories];
+    const categoryIndex = currentCategories.indexOf(category);
+    if (categoryIndex !== -1) {
+      updatedCategories.splice(categoryIndex, 1);
+    } else {
+      updatedCategories.push(category);
+    }
+    const updatedCategoriesValue = updatedCategories.join(',');
+    
+    return {
+      search: queryString.stringify({
+        ...this.props.urlSearchParams, 
+        page: 1,
+        categories: updatedCategoriesValue
+      })
+    };
   }
 
   render() {
@@ -61,25 +81,23 @@ class Filter extends LogRender {
           </Headline>
           <div className="filter-form__checkbox-labels">
             {this.props.allCategories.map((category, index) => 
-              <React.Fragment key={index}>
-                <input 
-                  id={category} type="checkbox" value={category}
-                  checked={this.props.filters.categories.includes(category)}
-                  onChange={this.handleCategoryChange}
-                  className="visually-hidden filter-form__checkbox" />
-                <label htmlFor={category} className="filter-form__checkbox-label">
-                  {category}
-                </label>
-              </React.Fragment>
+              <Link 
+                key={index}
+                to={this.getLinkToCategory(category)}
+                className={this.props.categories && this.props.categories.includes(category) ? 'filter-form__checkbox-link filter-form__checkbox-link--checked' : 'filter-form__checkbox-link'} 
+              >
+                {category}
+              </Link>
             )}
           </div>
         </div>
-        <button 
-          onClick={this.clearFilters} type="button" 
+        <Link 
+          to="/"
+          onClick={this.clearFilters}
           className="filter-form__button filter-form__button--secondary"
         >
           Сбросить фильтры
-        </button>
+        </Link>
       </form>
     );
   }
@@ -88,7 +106,11 @@ class Filter extends LogRender {
 Filter.propTypes = {
   filters: PropTypes.object,
   allCategories: PropTypes.arrayOf(PropTypes.string),
-  filtersFunctions: PropTypes.objectOf(PropTypes.func)
+  categories: PropTypes.arrayOf(PropTypes.string),
+  filtersFunctions: PropTypes.objectOf(PropTypes.func),
+  urlSearchParams: PropTypes.object
 };
 
-export default Filter;
+const FilterWithRouter = withRouter(Filter);
+
+export default FilterWithRouter;

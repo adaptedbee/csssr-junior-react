@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 
 import LogRender from '../LogRender/LogRender.js';
 import List from '../List/List.js';
@@ -14,10 +15,10 @@ class ProductsList extends LogRender {
 
         {this.props.productsOnPage.length > 0 ? (
           <Pagination 
-            currentPage={this.props.currentPage} 
+            currentPage={this.props.currentPage}
             productsPerPage={this.props.productsPerPage}
             productsCount={this.props.filteredProducts.length}
-            goToPage={this.props.goToPage}
+            urlSearchParams={this.props.urlSearchParams}
           />
         ) : ''}
       </React.Fragment>
@@ -26,12 +27,13 @@ class ProductsList extends LogRender {
 }
 
 ProductsList.propTypes = {
-  filters: PropTypes.object,
-  currentPage: PropTypes.number,
   productsPerPage: PropTypes.number,
-  goToPage: PropTypes.func,
   filteredProducts: PropTypes.array,
-  productsOnPage: PropTypes.array
+  currentPage: PropTypes.number,
+  productsOnPage: PropTypes.array,
+  urlSearchParams: PropTypes.object
 };
 
-export default ProductsList;
+const ProductsListWithRouter = withRouter(ProductsList);
+
+export default ProductsListWithRouter;
