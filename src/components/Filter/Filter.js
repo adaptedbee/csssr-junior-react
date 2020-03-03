@@ -41,6 +41,7 @@ class Filter extends LogRender {
     return {
       search: queryString.stringify({
         ...this.props.urlSearchParams, 
+        page: 1,
         categories: updatedCategoriesValue
       })
     };
