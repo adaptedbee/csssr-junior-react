@@ -11,58 +11,38 @@ import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage.js';
 const FETCH_PRODUCTS_URL = 'https://course-api.csssr.school/products';
 
 class ProductsList extends LogRender {
-  constructor() {
-    super();
-    this.state = {
-      isLoading: false,
-      isError: false,
-      products: []
-    };
-  }
-
   componentDidMount() {
     this.fetchProducts(FETCH_PRODUCTS_URL);
   }
 
   fetchProducts = (url) => {
-    this.setState({
-      isLoading: true
-    });
+    this.props.fetchProductsStart();
 
-    setTimeout(() => {
-      fetch(url)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response);
-        };
-      })
-      .then(result => {
-        if (result && result.result === 'OK' && result.products) {
-          this.setState({
-            isLoading: false,
-            isError: false,
-            products: result.products
-          });
-        }
-        if (result && result.result === 'ERROR' && result.message) {
-          throw new Error(result.message);
-        }
-      })
-      .catch(error => {
-        this.setState({
-          isLoading: false,
-          isError: true
-        });
-      })
-    }, 3000);
+    fetch(url)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        this.props.fetchProductsFail(response);
+      };
+    })
+    .then(result => {
+      if (result && result.result === 'OK' && result.products) {
+        this.props.fetchProductsSuccess(result.products);
+      }
+      if (result && result.result === 'ERROR' && result.message) {
+        this.props.fetchProductsFail(result.message);
+      }
+    })
+    .catch(error => {
+      this.props.fetchProductsFail(error);
+    })
   }
 
   render() {
     return (
       <React.Fragment>
-        {this.state.isLoading && !this.state.isError ? (
+        {this.props.isLoading && !this.props.isError ? (
           <img 
             className="page__image" 
             src="/img/loading-items.svg"
@@ -71,7 +51,7 @@ class ProductsList extends LogRender {
             alt="Загрузка..." />
         ) : ''}
 
-        {!this.state.isLoading && !this.state.isError && this.state.products && this.state.products.length > 0 ? (
+        {!this.props.isLoading && !this.props.isError && this.props.filteredProducts && this.props.filteredProducts.length > 0 ? (
           <React.Fragment>
             <List items={this.props.productsOnPage} renderItem={ProductCard} />
 
@@ -86,11 +66,11 @@ class ProductsList extends LogRender {
           </React.Fragment>
         ) : ''}
 
-        {!this.state.isLoading && !this.state.isError && (!this.state.products || this.state.products.length === 0) ? (
+        {!this.props.isLoading && !this.props.isError && (!this.props.filteredProducts || this.props.filteredProducts.length === 0) ? (
           <NotFoundPage headline={'Товары не найдены'} showBackLink={false} />
         ) : ''}
 
-        {!this.state.isLoading && this.state.isError ? (
+        {!this.props.isLoading && this.props.isError ? (
           <NotFoundPage headline={'Произошла ошибка'} showBackLink={false} />
         ) : ''}
       </React.Fragment>
@@ -103,7 +83,12 @@ ProductsList.propTypes = {
   filteredProducts: PropTypes.array,
   currentPage: PropTypes.number,
   productsOnPage: PropTypes.array,
-  urlSearchParams: PropTypes.object
+  urlSearchParams: PropTypes.object,
+  isLoading: PropTypes.bool,
+  isError: PropTypes.bool,
+  fetchProductsStart: PropTypes.func,
+  fetchProductsSuccess: PropTypes.func,
+  fetchProductsFail: PropTypes.func
 };
 
 const ProductsListWithRouter = withRouter(ProductsList);

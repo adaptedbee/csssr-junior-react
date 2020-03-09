@@ -2,18 +2,18 @@ import { minBy, maxBy } from 'csssr-school-utils';
 import queryString from 'query-string';
 import { createSelector } from 'reselect';
 
-import products from '../../products.json';
 import * as types from './actionTypes';
+import * as productsTypes from '../products/actionTypes';
 
-const allProductsCategories = products.map(item => item.category);
-const productsCategories = [...new Set(allProductsCategories)];
 const initialState = {
   filters: {
-    minPrice: minBy(obj => obj.price, products).price,
-    maxPrice: maxBy(obj => obj.price, products).price,
-    discount: 0,
+    minPrice: 0,
+    maxPrice: 0,
+    discount: 0
   },
-  allCategories: productsCategories,
+  allCategories: [],
+  productsMinPrice: 0,
+  productsMaxPrice: 0
 };
 
 export default function filtersReducer(state = initialState, action) {
@@ -39,10 +39,29 @@ export default function filtersReducer(state = initialState, action) {
       return Object.assign({}, state, {
         filters: {
           ...state.filters,
-          minPrice: minBy(obj => obj.price, products).price,
-          maxPrice: maxBy(obj => obj.price, products).price,
+          minPrice: state.productsMinPrice,
+          maxPrice: state.productsMaxPrice,
           discount: 0,
         }
+      });
+    }
+    case productsTypes.FETCH_PRODUCTS_SUCCESS: {
+      const products = action.payload.products;
+      const allProductsCategories = products.map(item => item.category);
+      const productsCategories = [...new Set(allProductsCategories)];
+
+      const minPrice = minBy(obj => obj.price, products).price;
+      const maxPrice = maxBy(obj => obj.price, products).price;
+
+      return Object.assign({}, state, {
+        filters: {
+          ...state.filters,
+          minPrice: minPrice,
+          maxPrice: maxPrice
+        },
+        allCategories: productsCategories,
+        productsMinPrice: minPrice,
+        productsMaxPrice: maxPrice
       });
     }
     default: {
