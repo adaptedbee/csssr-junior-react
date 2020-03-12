@@ -49,7 +49,7 @@ class ProductsList extends LogRender {
             width="736"
             height="648"
             alt="Загрузка..." />
-        ) : ''}
+        ) : null}
 
         {!this.props.isLoading && !this.props.isError && this.props.filteredProducts && this.props.filteredProducts.length > 0 ? (
           <React.Fragment>
@@ -62,17 +62,17 @@ class ProductsList extends LogRender {
                 productsCount={this.props.filteredProducts.length}
                 urlSearchParams={this.props.urlSearchParams}
               />
-            ) : ''}
+            ) : null}
           </React.Fragment>
-        ) : ''}
+        ) : null}
 
         {!this.props.isLoading && !this.props.isError && (!this.props.filteredProducts || this.props.filteredProducts.length === 0) ? (
           <NotFoundPage headline={'Товары не найдены'} showBackLink={false} />
-        ) : ''}
+        ) : null}
 
         {!this.props.isLoading && this.props.isError ? (
           <NotFoundPage headline={'Произошла ошибка'} showBackLink={false} />
-        ) : ''}
+        ) : null}
       </React.Fragment>
     );
   }

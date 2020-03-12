@@ -17,7 +17,7 @@ class NotFoundPage extends React.Component {
               className="page__back-link">
               <span className="visually-hidden">Назад</span>
             </Link>
-          ) : ''}
+          ) : null}
           <h1 className="page__headline">
             {this.props.headline}
           </h1>

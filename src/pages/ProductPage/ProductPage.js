@@ -57,7 +57,7 @@ class ProductPage extends React.Component {
                   {formatPrice(product.price)}
                 </p>
                 <p className="product__subprice">
-                  {product.oldPrice ? formatPrice(product.oldPrice) : ''}
+                  {product.oldPrice ? formatPrice(product.oldPrice) : null}
                 </p>
               </div>
             </div>
