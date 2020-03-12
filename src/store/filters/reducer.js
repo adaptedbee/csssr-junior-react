@@ -19,31 +19,34 @@ const initialState = {
 export default function filtersReducer(state = initialState, action) {
   switch (action.type) {
     case types.UPDATE_PRICE: {
-      return Object.assign({}, state, {
+      return {
+        ...state,
         filters: {
           ...state.filters,
           minPrice: action.payload.minPrice,
           maxPrice: action.payload.maxPrice
         }
-      });
+      };
     }
     case types.UPDATE_DISCOUNT: {
-      return Object.assign({}, state, {
+      return {
+        ...state,
         filters: {
           ...state.filters,
           discount: action.payload.discount
         }
-      });
+      };
     }
     case types.CLEAR_FILTERS: {
-      return Object.assign({}, state, {
+      return {
+        ...state,
         filters: {
           ...state.filters,
           minPrice: state.productsMinPrice,
           maxPrice: state.productsMaxPrice,
           discount: 0,
         }
-      });
+      };
     }
     case productsTypes.FETCH_PRODUCTS_SUCCESS: {
       const products = action.payload.products;
@@ -53,7 +56,8 @@ export default function filtersReducer(state = initialState, action) {
       const minPrice = minBy(obj => obj.price, products).price;
       const maxPrice = maxBy(obj => obj.price, products).price;
 
-      return Object.assign({}, state, {
+      return {
+        ...state,
         filters: {
           ...state.filters,
           minPrice: minPrice,
@@ -62,7 +66,7 @@ export default function filtersReducer(state = initialState, action) {
         allCategories: productsCategories,
         productsMinPrice: minPrice,
         productsMaxPrice: maxPrice
-      });
+      };
     }
     default: {
       return state;

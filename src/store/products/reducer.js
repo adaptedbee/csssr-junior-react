@@ -12,23 +12,26 @@ const initialState = {
 export default function productsReducer(state = initialState, action) {
   switch (action.type) {
     case types.FETCH_PRODUCTS_START: {
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoading: true, 
         isError: false
-      });
+      };
     }
     case types.FETCH_PRODUCTS_FAIL: {
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoading: false, 
         isError: true
-      });
+      };
     }
     case types.FETCH_PRODUCTS_SUCCESS: {
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoading: false, 
         isError: false,
         products: action.payload.products
-      });
+      };
     }
     default: {
       return state;
