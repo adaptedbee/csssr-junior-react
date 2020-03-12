@@ -40,9 +40,11 @@ class ProductsList extends LogRender {
   }
 
   render() {
+    const { isLoading, isError, filteredProducts, productsOnPage, currentPage, productsPerPage, urlSearchParams } = this.props;
+    
     return (
       <React.Fragment>
-        {this.props.isLoading && !this.props.isError ? (
+        {isLoading && !isError ? (
           <img 
             className="page__image" 
             src="/img/loading-items.svg"
@@ -51,26 +53,26 @@ class ProductsList extends LogRender {
             alt="Загрузка..." />
         ) : null}
 
-        {!this.props.isLoading && !this.props.isError && this.props.filteredProducts && this.props.filteredProducts.length > 0 ? (
+        {!isLoading && !isError && filteredProducts && filteredProducts.length > 0 ? (
           <React.Fragment>
-            <List items={this.props.productsOnPage} renderItem={ProductCard} />
+            <List items={productsOnPage} renderItem={ProductCard} />
 
-            {this.props.productsOnPage.length > 0 ? (
+            {productsOnPage.length > 0 ? (
               <Pagination 
-                currentPage={this.props.currentPage}
-                productsPerPage={this.props.productsPerPage}
-                productsCount={this.props.filteredProducts.length}
-                urlSearchParams={this.props.urlSearchParams}
+                currentPage={currentPage}
+                productsPerPage={productsPerPage}
+                productsCount={filteredProducts.length}
+                urlSearchParams={urlSearchParams}
               />
             ) : null}
           </React.Fragment>
         ) : null}
 
-        {!this.props.isLoading && !this.props.isError && (!this.props.filteredProducts || this.props.filteredProducts.length === 0) ? (
+        {!isLoading && !isError && (!filteredProducts || filteredProducts.length === 0) ? (
           <NotFoundPage headline={'Товары не найдены'} showBackLink={false} />
         ) : null}
 
-        {!this.props.isLoading && this.props.isError ? (
+        {!isLoading && isError ? (
           <NotFoundPage headline={'Произошла ошибка'} showBackLink={false} />
         ) : null}
       </React.Fragment>
