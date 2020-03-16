@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-import './NotFoundPage.css';
+import './NotFound.css';
 
-class NotFoundPage extends React.Component {
+class NotFound extends React.Component {
   render() {
     return (
       <article className="page">
@@ -18,9 +18,9 @@ class NotFoundPage extends React.Component {
               <span className="visually-hidden">Назад</span>
             </Link>
           ) : null}
-          <h1 className="page__headline">
+          <h2 className="page__headline">
             {this.props.headline}
-          </h1>
+          </h2>
         </header>
   
         <img 
@@ -34,11 +34,11 @@ class NotFoundPage extends React.Component {
   }
 }
 
-NotFoundPage.propTypes = {
+NotFound.propTypes = {
   headline: PropTypes.string,
   showBackLink: PropTypes.bool
 };
 
-const NotFoundPageWithRouter = withRouter(NotFoundPage);
+const NotFoundWithRouter = withRouter(NotFound);
 
-export default NotFoundPageWithRouter;
+export default NotFoundWithRouter;

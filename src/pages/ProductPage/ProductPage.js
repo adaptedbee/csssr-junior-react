@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 import RatingComponent from '../../components/RatingComponent/RatingComponent.js';
 import './ProductPage.css';
 import formatPrice from '../../utils/utils';
-import NotFoundPage from '../NotFoundPage/NotFoundPage.js';
+import NotFound from '../../components/NotFound/NotFound.js';
 
 const range = to => [...Array(to).keys()].map(i => i + 1);
 
@@ -63,7 +63,7 @@ class ProductPage extends React.Component {
             </div>
           </section>
           </article>
-        ) : <NotFoundPage headline={'Товар не найден'} showBackLink={true} />}
+        ) : <NotFound headline={'Товар не найден'} showBackLink={true} />}
       </React.Fragment>
     );
   }

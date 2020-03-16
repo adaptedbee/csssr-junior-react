@@ -6,7 +6,7 @@ import LogRender from '../LogRender/LogRender.js';
 import List from '../List/List.js';
 import ProductCard from '../ProductCard/ProductCard.js';
 import Pagination from '../Pagination/Pagination';
-import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage.js';
+import NotFound from '../NotFound/NotFound.js';
 
 const FETCH_PRODUCTS_URL = 'https://course-api.csssr.school/products';
 
@@ -69,11 +69,11 @@ class ProductsList extends LogRender {
         ) : null}
 
         {!isLoading && !isError && (!filteredProducts || filteredProducts.length === 0) ? (
-          <NotFoundPage headline={'Товары не найдены'} showBackLink={false} />
+          <NotFound headline={'Товары не найдены'} showBackLink={false} />
         ) : null}
 
         {!isLoading && isError ? (
-          <NotFoundPage headline={'Произошла ошибка'} showBackLink={false} />
+          <NotFound headline={'Произошла ошибка'} showBackLink={false} />
         ) : null}
       </React.Fragment>
     );
