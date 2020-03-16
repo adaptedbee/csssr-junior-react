@@ -28,28 +28,28 @@ class ProductPage extends React.Component {
                 <span className="visually-hidden">Назад в каталог</span>
               </Link>
               <h1 className="page__headline">
-                {product.title}
+                {product.name}
               </h1>
             </header>
       
-            <section className={product.isInStock ? 'product' : 'product product--out-of-stock'}>
-            <div className={product.isInStock ? 'product__status' : 'product__status product__status--out-of-stock'}>
-              {product.isInStock ? 'В наличии' : 'Недоступен'}
+            <section className={product.status === 'IN_STOCK' ? 'product' : 'product product--out-of-stock'}>
+            <div className={product.status === 'IN_STOCK' ? 'product__status' : 'product__status product__status--out-of-stock'}>
+              {product.status === 'IN_STOCK' ? 'В наличии' : 'Недоступен'}
             </div>
             <img
               className="product__image"
               src={product.img}
-              alt={product.title}
+              alt={product.name}
               width="224"
               height="200"
             />
             <div className="product__info">
               <h2 className="product__title">
-                {product.title}
+                {product.name}
               </h2>
               <div className="product__rating-wrapper">
-                {range(product.maxRating).map(i => 
-                  <RatingComponent key={i} isFilled={i <= product.rating} />
+                {range(5).map(i => 
+                  <RatingComponent key={i} isFilled={i <= product.stars} />
                 )}
               </div>
               <div className="product__price-wrapper">
