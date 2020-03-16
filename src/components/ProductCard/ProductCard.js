@@ -15,13 +15,13 @@ class ProductCard extends LogRender {
       <Link to={{pathname: `/product/${item.id}`}}>
         <ProductItem
           key={item.id}
-          isInStock={item.isInStock}
+          isInStock={item.status === 'IN_STOCK'}
           img={item.img}
-          title={item.title}
+          title={item.name}
           price={formatPrice(item.price)}
           subPriceContent={item.oldPrice ? formatPrice(item.oldPrice) : ''}
-          maxRating={item.maxRating}
-          rating={item.rating}
+          maxRating={5}
+          rating={item.stars}
           ratingComponent={RatingComponent}
         />
       </Link>

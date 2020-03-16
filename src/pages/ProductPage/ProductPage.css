@@ -122,7 +122,10 @@
   color: #323C48;
 }
 
-.page__not-found-image {
+.page__image {
   display: block;
-  margin: 24px auto 0;
+  margin: 24px auto 50px;
+
+  width: 800px;
+  height: auto;
 }

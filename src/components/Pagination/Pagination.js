@@ -32,7 +32,7 @@ class Pagination extends React.Component {
               Назад
             </Link>
           </li>
-        ) : ''}
+        ) : null}
 
         {this.props.currentPage > 1 ? (
           <li className="pagination__item">
@@ -43,7 +43,7 @@ class Pagination extends React.Component {
               {this.props.currentPage - 1}
             </Link>
           </li>
-        ) : ''}
+        ) : null}
         <li className="pagination__item">
           <Link 
             to={this.getLinkToPage(this.props.currentPage)}
@@ -60,7 +60,7 @@ class Pagination extends React.Component {
               {this.props.currentPage + 1}
             </Link>
           </li>
-        ) : ''}
+        ) : null}
         
         {this.props.currentPage < this.getPagesCount() - 2 ? (
           <li className="pagination__item">
@@ -71,7 +71,7 @@ class Pagination extends React.Component {
               ...
             </Link>
           </li>
-        ) : ''}
+        ) : null}
         {this.props.currentPage < this.getPagesCount() - 1 ? (
           <li className="pagination__item">
             <Link 
@@ -81,7 +81,7 @@ class Pagination extends React.Component {
               {this.getPagesCount()}
             </Link>
           </li>
-        ) : ''}
+        ) : null}
   
         {this.props.currentPage < this.getPagesCount() ? (
           <li className="pagination__item pagination__item--next">
@@ -92,7 +92,7 @@ class Pagination extends React.Component {
               Вперёд
             </Link>
           </li>
-        ) : ''}
+        ) : null}
       </ul>
     );
   }

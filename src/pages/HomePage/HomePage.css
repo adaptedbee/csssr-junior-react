@@ -7,10 +7,10 @@
 }
 
 .container__left {
-  width: 18%;
-  margin-right: 2%;
+  width: 240px;
+  margin-right: 40px;
 }
 
 .container__center {
-  width: 65%;
+  width: 800px;
 }
