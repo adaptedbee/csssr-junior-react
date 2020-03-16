@@ -1,0 +1,20 @@
+.not-found-page {
+  padding-top: 123px;
+}
+
+.not-found-page__image {
+  display: block;
+  width: 221px;
+  height: 379px;
+  margin: 0 auto;
+}
+
+.not-found-page__headline {
+  margin-top: 51px;
+
+  font-weight: 300;
+  font-size: 100px;
+  line-height: 100px;
+  color: #323C48;
+  text-align: center;
+}
