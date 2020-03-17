@@ -6,6 +6,10 @@
   padding-right: 20px;
 }
 
+.container--padding-top {
+  padding-top: 78px;
+}
+
 .container__left {
   width: 240px;
   margin-right: 40px;

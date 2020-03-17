@@ -8,6 +8,7 @@ import './ProductPage.css';
 import formatPrice from '../../utils/utils';
 import NotFound from '../../components/NotFound/NotFound.js';
 import AddToCartButton from '../../components/AddToCartButton/AddToCartButton.js';
+import Cart from '../../components/Cart/Cart.js';
 
 const range = to => [...Array(to).keys()].map(i => i + 1);
 
@@ -18,7 +19,10 @@ class ProductPage extends React.Component {
     const product = this.props.products.find(item => item.id === productId);
 
     return (
-      <React.Fragment>
+      <div className="container container--padding-top">
+        <div className="container__left"></div>
+
+        <div className="container__center">
         {product ? (
           <article className="page">
             <header className="page__header">
@@ -67,7 +71,12 @@ class ProductPage extends React.Component {
           </section>
           </article>
         ) : <NotFound headline={'Товар не найден'} showBackLink={true} />}
-      </React.Fragment>
+        </div>
+
+        <div className="container__right">
+          <Cart />
+        </div>
+      </div>
     );
   }
 }
