@@ -83,3 +83,16 @@
   border: 1px solid #323C48;
   cursor: pointer;
 }
+
+.cart__link {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  color: #323C48;
+  text-decoration: none;
+  text-align: center;
+}
