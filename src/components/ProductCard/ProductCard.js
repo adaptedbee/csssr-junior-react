@@ -12,19 +12,23 @@ class ProductCard extends LogRender {
     const item = this.props.item;
 
     return (
-      <Link to={{pathname: `/product/${item.id}`}}>
-        <ProductItem
-          key={item.id}
-          isInStock={item.status === 'IN_STOCK'}
-          img={item.img}
-          title={item.name}
-          price={formatPrice(item.price)}
-          subPriceContent={item.oldPrice ? formatPrice(item.oldPrice) : ''}
-          maxRating={5}
-          rating={item.stars}
-          ratingComponent={RatingComponent}
-        />
-      </Link>
+      <React.Fragment>
+        <Link to={{pathname: `/product/${item.id}`}}>
+          <ProductItem
+            key={item.id}
+            isInStock={item.status === 'IN_STOCK'}
+            img={item.img}
+            title={item.name}
+            price={formatPrice(item.price)}
+            subPriceContent={item.oldPrice ? formatPrice(item.oldPrice) : ''}
+            maxRating={5}
+            rating={item.stars}
+            ratingComponent={RatingComponent}
+          />
+        </Link>
+
+        <button className="button">Добавить</button>
+      </React.Fragment>
     );
   }
 }
