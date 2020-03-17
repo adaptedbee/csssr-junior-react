@@ -4,6 +4,7 @@ import './HomePage.css';
 import Headline from '../../components/Headline/Headline.js';
 import ProductsListContainer from '../../containers/ProductsListContainer.js';
 import FilterContainer from '../../containers/FilterContainer.js';
+import Cart from '../../components/Cart/Cart';
 
 const HomePage = () => {
   return (
@@ -17,6 +18,9 @@ const HomePage = () => {
         </div>
         <div className="container__center">
           <ProductsListContainer />
+        </div>
+        <div className="container__right">
+          <Cart />
         </div>
       </div>
     </React.Fragment>

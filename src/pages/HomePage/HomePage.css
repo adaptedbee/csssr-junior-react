@@ -12,5 +12,12 @@
 }
 
 .container__center {
-  width: 800px;
+  width: 720px;
+}
+
+.container__right {
+  /* width: 220px; */
+  margin-right: 0;
+  margin-left: 40px;
+  flex-grow: 1;
 }
