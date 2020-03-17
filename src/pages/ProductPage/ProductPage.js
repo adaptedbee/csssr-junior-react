@@ -60,6 +60,8 @@ class ProductPage extends React.Component {
                   {product.oldPrice ? formatPrice(product.oldPrice) : null}
                 </p>
               </div>
+
+              <button className="button">Добавить в корзину</button>
             </div>
           </section>
           </article>
