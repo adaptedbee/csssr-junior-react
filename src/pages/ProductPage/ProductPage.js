@@ -7,6 +7,7 @@ import RatingComponent from '../../components/RatingComponent/RatingComponent.js
 import './ProductPage.css';
 import formatPrice from '../../utils/utils';
 import NotFound from '../../components/NotFound/NotFound.js';
+import AddToCartButton from '../../components/AddToCartButton/AddToCartButton.js';
 
 const range = to => [...Array(to).keys()].map(i => i + 1);
 
@@ -61,7 +62,7 @@ class ProductPage extends React.Component {
                 </p>
               </div>
 
-              <button className="button">Добавить в корзину</button>
+              <AddToCartButton />
             </div>
           </section>
           </article>
