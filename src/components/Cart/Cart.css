@@ -48,6 +48,24 @@
   color: #323C48;
 }
 
+.cart__amount--done {
+  position: relative;
+}
+
+.cart__amount--done::after {
+  content: '';
+  position: absolute;
+  right: -28px;
+  bottom: -2px;
+
+  width: 24px;
+  height: 24px;
+  background-size: 100% auto;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-image: url('/img/icon-done.svg');
+}
+
 .button {
   display: block;
   width: 100%;

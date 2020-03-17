@@ -7,10 +7,12 @@ const Cart = () => {
     <section className="cart">
       <header className="cart__header">
         <h2 className="cart__headline">Корзина</h2>
-        <p className="cart__amount">0</p>
+        <p className="cart__amount cart__amount--done">0</p>
       </header>
 
       <button className="button">Сохранить корзину</button>
+
+      <button className="button">Очистить корзину</button>
     </section>
   );
 }
