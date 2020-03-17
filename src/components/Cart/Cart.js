@@ -14,7 +14,7 @@ const Cart = () => {
 
       <button className="button">Очистить корзину</button>
 
-      <a className="cart__link" href="#">Перейти в корзину</a>
+      <a className="cart__link" href="/">Перейти в корзину</a>
     </section>
   );
 }
