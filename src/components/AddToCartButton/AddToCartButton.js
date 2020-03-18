@@ -12,7 +12,7 @@ class AddToCartButton extends React.Component {
     }
   }
   isProductInCart = () => {
-    return this.props.cartProducts.find(item => item === this.props.product);
+    return this.props.cartProducts.includes(this.props.product);
   }
 
   render() {
