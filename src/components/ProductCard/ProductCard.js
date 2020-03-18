@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import LogRender from '../LogRender/LogRender.js';
 import RatingComponent from '../RatingComponent/RatingComponent.js';
 import formatPrice from '../../utils/utils';
-import AddToCartButton from '../AddToCartButton/AddToCartButton.js';
+import AddToCartButtonContainer from '../../containers/AddToCartButtonContainer.js';
 
 class ProductCard extends LogRender {
   render() {
@@ -28,7 +28,7 @@ class ProductCard extends LogRender {
           />
         </Link>
 
-        <AddToCartButton />
+        <AddToCartButtonContainer product={item} />
       </React.Fragment>
     );
   }
