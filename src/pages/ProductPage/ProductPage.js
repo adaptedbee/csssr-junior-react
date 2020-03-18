@@ -8,7 +8,7 @@ import './ProductPage.css';
 import formatPrice from '../../utils/utils';
 import NotFound from '../../components/NotFound/NotFound.js';
 import AddToCartButton from '../../components/AddToCartButton/AddToCartButton.js';
-import Cart from '../../components/Cart/Cart.js';
+import CartContainer from '../../containers/CartContainer.js';
 
 const range = to => [...Array(to).keys()].map(i => i + 1);
 
@@ -74,7 +74,7 @@ class ProductPage extends React.Component {
         </div>
 
         <div className="container__right">
-          <Cart />
+          <CartContainer />
         </div>
       </div>
     );

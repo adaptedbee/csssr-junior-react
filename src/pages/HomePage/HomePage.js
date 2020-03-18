@@ -4,7 +4,7 @@ import './HomePage.css';
 import Headline from '../../components/Headline/Headline.js';
 import ProductsListContainer from '../../containers/ProductsListContainer.js';
 import FilterContainer from '../../containers/FilterContainer.js';
-import Cart from '../../components/Cart/Cart';
+import CartContainer from '../../containers/CartContainer';
 
 const HomePage = () => {
   return (
@@ -20,7 +20,7 @@ const HomePage = () => {
           <ProductsListContainer />
         </div>
         <div className="container__right">
-          <Cart />
+          <CartContainer />
         </div>
       </div>
     </React.Fragment>

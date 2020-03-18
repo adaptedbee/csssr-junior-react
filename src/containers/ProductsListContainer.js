@@ -20,9 +20,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchProductsStart: () => dispatch(fetchProductsStart()) ,
-    fetchProductsSuccess: (products) => dispatch(fetchProductsSuccess(products)) ,
-    fetchProductsFail: (error) => dispatch(fetchProductsFail(error)) ,
+    fetchProductsStart: () => dispatch(fetchProductsStart()),
+    fetchProductsSuccess: (products) => dispatch(fetchProductsSuccess(products)),
+    fetchProductsFail: (error) => dispatch(fetchProductsFail(error))
   }
 };
 

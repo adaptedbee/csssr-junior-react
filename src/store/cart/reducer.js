@@ -28,3 +28,5 @@ export default function cartReducer(state = initialState, action) {
     }
   }
 }
+
+export const getCartProducts = (state) => state.cart.cartProducts;
