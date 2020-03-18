@@ -78,3 +78,13 @@
   text-decoration: none;
   text-align: center;
 }
+
+.cart__message {
+  margin-top: 16px;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  color: red;
+  text-align: center;
+}

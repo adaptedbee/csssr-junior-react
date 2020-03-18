@@ -57,6 +57,10 @@ class Cart extends React.Component {
         </button>
   
         <a className="cart__link" href="/">Перейти в корзину</a>
+
+        {this.props.isError ? (
+          <p className="cart__message">Ошибка сохранения корзины</p>
+        ) : null}
       </section>
     );
   }
