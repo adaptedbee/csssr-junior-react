@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getCartProducts } from '../store/cart/reducer';
+import { getCartProducts, getCartSaving } from '../store/cart/reducer';
 import { addToCart, removeFromCart } from '../store/cart/actions.js';
 import AddToCartButton from '../components/AddToCartButton/AddToCartButton';
 
 const mapStateToProps = (state) => {
   return {
-    cartProducts: getCartProducts(state)
+    cartProducts: getCartProducts(state),
+    isSaving: getCartSaving(state),
   };
 };
 

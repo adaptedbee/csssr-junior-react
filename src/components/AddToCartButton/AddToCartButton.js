@@ -17,7 +17,11 @@ class AddToCartButton extends React.Component {
 
   render() {
     return (
-      <button onClick={this.handleClick} className="button">
+      <button 
+        onClick={this.handleClick} 
+        disabled={this.props.isSaving} 
+        className="button"
+      >
         {!this.isProductInCart() ? (
           <span>Добавить в корзину</span>
         ) : (
@@ -32,7 +36,8 @@ AddToCartButton.propTypes = {
   product: PropTypes.object,
   cartProducts: PropTypes.array,
   addToCart: PropTypes.func,
-  removeFromCart: PropTypes.func
+  removeFromCart: PropTypes.func,
+  isSaving: PropTypes.bool,
 }
 
 export default AddToCartButton;
