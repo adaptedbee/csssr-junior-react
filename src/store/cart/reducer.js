@@ -9,13 +9,13 @@ export default function cartReducer(state = initialState, action) {
     case types.ADD_TO_CART : {
       return {
         ...state,
-        cartProducts: [...state.cartProducts, action.payload.product]
+        cartProducts: [...state.cartProducts, action.payload.productId]
       };
     }
     case types.REMOVE_FROM_CART : {
       return {
         ...state,
-        cartProducts: state.cartProducts.filter(item => item !== action.payload.product)
+        cartProducts: state.cartProducts.filter(item => item !== action.payload.productId)
       };
     }
     case types.CLEAR_CART : {

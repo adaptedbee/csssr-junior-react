@@ -1,19 +1,19 @@
 import * as types from './actionTypes';
 
-export const addToCart = (product) => {
+export const addToCart = (productId) => {
   return {
     type: types.ADD_TO_CART,
     payload: {
-      product
+      productId
     }
   }
 };
 
-export const removeFromCart = (product) => {
+export const removeFromCart = (productId) => {
   return {
     type: types.REMOVE_FROM_CART,
     payload: {
-      product
+      productId
     }
   }
 };
