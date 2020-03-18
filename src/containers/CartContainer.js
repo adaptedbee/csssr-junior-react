@@ -7,7 +7,7 @@ import { clearCart, saveCartStart, saveCartSuccess, saveCartFail } from '../stor
 const mapStateToProps = (state) => {
   return {
     cartProducts: getCartProducts(state),
-    isLoading: getCartSaving(state),
+    isSaving: getCartSaving(state),
     isError: getCartError(state)
   };
 };
