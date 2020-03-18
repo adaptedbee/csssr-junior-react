@@ -3,25 +3,55 @@ import PropTypes from 'prop-types';
 
 import './Cart.css';
 
-const Cart = (props) => {
-  return (
-    <section className="cart">
-      <header className="cart__header">
-        <h2 className="cart__headline">Корзина</h2>
-        <p className="cart__amount cart__amount--done">
-          {props.cartProducts.length}
-        </p>
-      </header>
+const SAVE_CART_URL = 'https://course-api.csssr.school/save';
 
-      <button className="button">Сохранить корзину</button>
+class Cart extends React.Component {
+  saveCart = () => {
+    this.props.saveCartStart();
 
-      <button onClick={props.clearCart} className="button">
-        Очистить корзину
-      </button>
+    fetch(SAVE_CART_URL, {
+      method: 'POST',
+      body: JSON.stringify(this.props.cartProducts),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        this.props.saveCartFail(response);
+      }
+    })
+    .then(result => {
+      this.props.saveCartSuccess();
+    })
+    .catch(error => {
+      this.props.saveCartFail(error);
+    });
+  }
 
-      <a className="cart__link" href="/">Перейти в корзину</a>
-    </section>
-  );
+  render() {
+    return (
+      <section className="cart">
+        <header className="cart__header">
+          <h2 className="cart__headline">Корзина</h2>
+          <p className="cart__amount cart__amount--done">
+            {this.props.cartProducts.length}
+          </p>
+        </header>
+  
+        <button onClick={this.saveCart} className="button">
+          Сохранить корзину
+        </button>
+  
+        <button onClick={this.props.clearCart} className="button">
+          Очистить корзину
+        </button>
+  
+        <a className="cart__link" href="/">Перейти в корзину</a>
+      </section>
+    );
+  }
 }
 
 Cart.propTypes = {
