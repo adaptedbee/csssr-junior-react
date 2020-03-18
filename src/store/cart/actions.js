@@ -23,3 +23,24 @@ export const clearCart = () => {
     type: types.CLEAR_CART
   }
 };
+
+export const saveCartStart = () => {
+  return {
+    type: types.SAVE_CART_START
+  }
+};
+
+export const saveCartSuccess = () => {
+  return {
+    type: types.SAVE_CART_SUCCESS
+  }
+};
+
+export const saveCartFail = (error) => {
+  return {
+    type: types.SAVE_CART_FAIL,
+    payload: {
+      error
+    }
+  }
+};

@@ -26,7 +26,12 @@ const Cart = (props) => {
 
 Cart.propTypes = {
   cartProducts: PropTypes.array,
-  clearCart: PropTypes.func
+  clearCart: PropTypes.func,
+  isSaving: PropTypes.bool,
+  isError: PropTypes.bool,
+  saveCartStart: PropTypes.func,
+  saveCartSuccess: PropTypes.func,
+  saveCartFail: PropTypes.func
 };
 
 export default Cart;

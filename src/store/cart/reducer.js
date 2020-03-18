@@ -1,7 +1,9 @@
 import * as types from './actionTypes';
 
 const initialState = {
-  cartProducts: []
+  cartProducts: [],
+  isSaving: false,
+  isError: false,
 };
 
 export default function cartReducer(state = initialState, action) {
@@ -23,6 +25,27 @@ export default function cartReducer(state = initialState, action) {
         ...initialState
       };
     }
+    case types.SAVE_CART_START: {
+      return {
+        ...state,
+        isSaving: true, 
+        isError: false
+      };
+    }
+    case types.SAVE_CART_FAIL: {
+      return {
+        ...state,
+        isSaving: false, 
+        isError: true
+      };
+    }
+    case types.SAVE_CART_SUCCESS: {
+      return {
+        ...state,
+        isSaving: false, 
+        isError: false
+      };
+    }
     default: {
       return state;
     }
@@ -30,3 +53,5 @@ export default function cartReducer(state = initialState, action) {
 }
 
 export const getCartProducts = (state) => state.cart.cartProducts;
+export const getCartSaving = (state) => state.cart.isSaving;
+export const getCartError = (state) => state.cart.isError;

@@ -1,18 +1,23 @@
 import { connect } from 'react-redux';
 
 import Cart from '../components/Cart/Cart';
-import { getCartProducts } from '../store/cart/reducer';
-import { clearCart } from '../store/cart/actions.js';
+import { getCartProducts, getCartSaving, getCartError } from '../store/cart/reducer';
+import { clearCart, saveCartStart, saveCartSuccess, saveCartFail } from '../store/cart/actions.js';
 
 const mapStateToProps = (state) => {
   return {
-    cartProducts: getCartProducts(state)
+    cartProducts: getCartProducts(state),
+    isLoading: getCartSaving(state),
+    isError: getCartError(state)
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    clearCart: () => dispatch(clearCart())
+    clearCart: () => dispatch(clearCart()),
+    saveCartStart: () => dispatch(saveCartStart()),
+    saveCartSuccess: () => dispatch(saveCartSuccess()),
+    saveCartFail: (error) => dispatch(saveCartFail(error))
   }
 };
 
