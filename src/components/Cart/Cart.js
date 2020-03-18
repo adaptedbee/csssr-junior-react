@@ -48,13 +48,15 @@ class Cart extends React.Component {
           Сохранить корзину
         </button>
   
-        <button 
-          onClick={this.props.clearCart} 
-          disabled={this.props.isSaving} 
-          className="button"
-        >
-          Очистить корзину
-        </button>
+        {this.props.cartProducts.length > 0 ? (
+          <button 
+            onClick={this.props.clearCart} 
+            disabled={this.props.isSaving} 
+            className="button"
+          >
+            Очистить корзину
+          </button>
+        ) : null}
   
         <a className="cart__link" href="/">Перейти в корзину</a>
 
