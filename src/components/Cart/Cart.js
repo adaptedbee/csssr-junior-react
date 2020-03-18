@@ -35,7 +35,7 @@ class Cart extends React.Component {
       <section className="cart">
         <header className="cart__header">
           <h2 className="cart__headline">Корзина</h2>
-          <p className="cart__amount cart__amount--done">
+          <p className={!this.props.isError && !this.props.isSaving ? 'cart__amount cart__amount--done' : 'cart__amount'}>
             {this.props.cartProducts.length}
           </p>
         </header>
