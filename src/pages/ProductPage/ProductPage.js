@@ -72,7 +72,7 @@ class ProductPage extends React.Component {
             </div>
           </section>
           </article>
-        ) : <NotFound headline={'Товар не найден'} showBackLink={true} />}
+        ) : <NotFound headline={'Товар не найден'} showBackLink />}
         </div>
 
         <div className="container__right">
