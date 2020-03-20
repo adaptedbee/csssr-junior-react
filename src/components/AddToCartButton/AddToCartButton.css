@@ -1,0 +1,17 @@
+.button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  margin-top: 16px;
+
+  font-size: 14px;
+  line-height: 14px;
+  color: #323C48;
+  text-align: center;
+
+  background-color: transparent;
+  border: 1px solid #323C48;
+  cursor: pointer;
+}

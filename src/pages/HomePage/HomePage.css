@@ -6,11 +6,21 @@
   padding-right: 20px;
 }
 
+.container--padding-top {
+  padding-top: 78px;
+}
+
 .container__left {
   width: 240px;
   margin-right: 40px;
 }
 
 .container__center {
-  width: 800px;
+  width: 720px;
+}
+
+.container__right {
+  margin-right: 0;
+  margin-left: 40px;
+  flex-grow: 1;
 }

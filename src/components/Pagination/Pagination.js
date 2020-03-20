@@ -23,7 +23,7 @@ class Pagination extends React.Component {
   render() {
     return (
       <ul className="pagination"> 
-        {this.props.currentPage > 1 ? (
+        {this.props.currentPage > 1 && (
           <li className="pagination__item pagination__item--prev">
             <Link 
               to={this.getLinkToPage(this.props.currentPage - 1)}
@@ -32,9 +32,9 @@ class Pagination extends React.Component {
               Назад
             </Link>
           </li>
-        ) : null}
+        )}
 
-        {this.props.currentPage > 1 ? (
+        {this.props.currentPage > 1 && (
           <li className="pagination__item">
             <Link 
               to={this.getLinkToPage(this.props.currentPage - 1)}
@@ -43,7 +43,7 @@ class Pagination extends React.Component {
               {this.props.currentPage - 1}
             </Link>
           </li>
-        ) : null}
+        )}
         <li className="pagination__item">
           <Link 
             to={this.getLinkToPage(this.props.currentPage)}
@@ -51,7 +51,7 @@ class Pagination extends React.Component {
             {this.props.currentPage}
           </Link>
         </li>
-        {this.props.currentPage < this.getPagesCount() ? (
+        {this.props.currentPage < this.getPagesCount() && (
           <li className="pagination__item">
             <Link 
               to={this.getLinkToPage(this.props.currentPage + 1)}
@@ -60,9 +60,9 @@ class Pagination extends React.Component {
               {this.props.currentPage + 1}
             </Link>
           </li>
-        ) : null}
+        )}
         
-        {this.props.currentPage < this.getPagesCount() - 2 ? (
+        {this.props.currentPage < this.getPagesCount() - 2 && (
           <li className="pagination__item">
             <Link 
               to={this.getLinkToPage(this.props.currentPage + 2)}
@@ -71,8 +71,8 @@ class Pagination extends React.Component {
               ...
             </Link>
           </li>
-        ) : null}
-        {this.props.currentPage < this.getPagesCount() - 1 ? (
+        )}
+        {this.props.currentPage < this.getPagesCount() - 1 && (
           <li className="pagination__item">
             <Link 
               to={this.getLinkToPage(this.getPagesCount())}
@@ -81,9 +81,9 @@ class Pagination extends React.Component {
               {this.getPagesCount()}
             </Link>
           </li>
-        ) : null}
+        )}
   
-        {this.props.currentPage < this.getPagesCount() ? (
+        {this.props.currentPage < this.getPagesCount() && (
           <li className="pagination__item pagination__item--next">
             <Link 
               to={this.getLinkToPage(this.props.currentPage + 1)}
@@ -92,7 +92,7 @@ class Pagination extends React.Component {
               Вперёд
             </Link>
           </li>
-        ) : null}
+        )}
       </ul>
     );
   }

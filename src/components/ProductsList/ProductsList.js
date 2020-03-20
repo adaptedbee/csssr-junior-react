@@ -6,7 +6,7 @@ import LogRender from '../LogRender/LogRender.js';
 import List from '../List/List.js';
 import ProductCard from '../ProductCard/ProductCard.js';
 import Pagination from '../Pagination/Pagination';
-import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage.js';
+import NotFound from '../NotFound/NotFound.js';
 
 const FETCH_PRODUCTS_URL = 'https://course-api.csssr.school/products';
 
@@ -44,37 +44,37 @@ class ProductsList extends LogRender {
     
     return (
       <React.Fragment>
-        {isLoading && !isError ? (
+        {isLoading && !isError && (
           <img 
             className="page__image" 
             src="/img/loading-items.svg"
             width="736"
             height="648"
             alt="Загрузка..." />
-        ) : null}
+        )}
 
-        {!isLoading && !isError && filteredProducts && filteredProducts.length > 0 ? (
+        {!isLoading && !isError && filteredProducts && filteredProducts.length > 0 && (
           <React.Fragment>
             <List items={productsOnPage} renderItem={ProductCard} />
 
-            {productsOnPage.length > 0 ? (
+            {productsOnPage.length > 0 && (
               <Pagination 
                 currentPage={currentPage}
                 productsPerPage={productsPerPage}
                 productsCount={filteredProducts.length}
                 urlSearchParams={urlSearchParams}
               />
-            ) : null}
+            )}
           </React.Fragment>
-        ) : null}
+        )}
 
-        {!isLoading && !isError && (!filteredProducts || filteredProducts.length === 0) ? (
-          <NotFoundPage headline={'Товары не найдены'} showBackLink={false} />
-        ) : null}
+        {!isLoading && !isError && (!filteredProducts || filteredProducts.length === 0) && (
+          <NotFound headline={'Товары не найдены'} showBackLink={false} />
+        )}
 
-        {!isLoading && isError ? (
-          <NotFoundPage headline={'Произошла ошибка'} showBackLink={false} />
-        ) : null}
+        {!isLoading && isError && (
+          <NotFound headline={'Произошла ошибка'} showBackLink={false} />
+        )}
       </React.Fragment>
     );
   }
