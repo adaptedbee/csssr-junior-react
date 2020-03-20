@@ -48,7 +48,7 @@ class Cart extends React.Component {
           Сохранить корзину
         </button>
   
-        {this.props.cartProducts.length > 0 ? (
+        {this.props.cartProducts.length > 0 && (
           <button 
             onClick={this.props.clearCart} 
             disabled={this.props.isSaving} 
@@ -56,13 +56,13 @@ class Cart extends React.Component {
           >
             Очистить корзину
           </button>
-        ) : null}
+        )}
   
         <a className="cart__link" href="/">Перейти в корзину</a>
 
-        {this.props.isError ? (
+        {this.props.isError && (
           <p className="cart__message">Ошибка сохранения корзины</p>
-        ) : null}
+        )}
       </section>
     );
   }

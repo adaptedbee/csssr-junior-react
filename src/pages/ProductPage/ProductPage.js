@@ -61,9 +61,11 @@ class ProductPage extends React.Component {
                 <p className="product__price">
                   {formatPrice(product.price)}
                 </p>
-                <p className="product__subprice">
-                  {product.oldPrice ? formatPrice(product.oldPrice) : null}
-                </p>
+                {product.oldPrice && (
+                  <p className="product__subprice">
+                    {formatPrice(product.oldPrice)}
+                  </p>
+                )}
               </div>
 
               <AddToCartButtonContainer product={product} />

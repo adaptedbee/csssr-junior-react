@@ -44,37 +44,37 @@ class ProductsList extends LogRender {
     
     return (
       <React.Fragment>
-        {isLoading && !isError ? (
+        {isLoading && !isError && (
           <img 
             className="page__image" 
             src="/img/loading-items.svg"
             width="736"
             height="648"
             alt="Загрузка..." />
-        ) : null}
+        )}
 
-        {!isLoading && !isError && filteredProducts && filteredProducts.length > 0 ? (
+        {!isLoading && !isError && filteredProducts && filteredProducts.length > 0 && (
           <React.Fragment>
             <List items={productsOnPage} renderItem={ProductCard} />
 
-            {productsOnPage.length > 0 ? (
+            {productsOnPage.length > 0 && (
               <Pagination 
                 currentPage={currentPage}
                 productsPerPage={productsPerPage}
                 productsCount={filteredProducts.length}
                 urlSearchParams={urlSearchParams}
               />
-            ) : null}
+            )}
           </React.Fragment>
-        ) : null}
+        )}
 
-        {!isLoading && !isError && (!filteredProducts || filteredProducts.length === 0) ? (
+        {!isLoading && !isError && (!filteredProducts || filteredProducts.length === 0) && (
           <NotFound headline={'Товары не найдены'} showBackLink={false} />
-        ) : null}
+        )}
 
-        {!isLoading && isError ? (
+        {!isLoading && isError && (
           <NotFound headline={'Произошла ошибка'} showBackLink={false} />
-        ) : null}
+        )}
       </React.Fragment>
     );
   }

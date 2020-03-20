@@ -10,14 +10,14 @@ class NotFound extends React.Component {
     return (
       <article className="page">
         <header className="page__header">
-          {this.props.showBackLink ? (
+          {this.props.showBackLink && (
             <Link 
               to={{}}
               onClick={this.props.history.goBack}
               className="page__back-link">
               <span className="visually-hidden">Назад</span>
             </Link>
-          ) : null}
+          )}
           <h2 className="page__headline">
             {this.props.headline}
           </h2>
