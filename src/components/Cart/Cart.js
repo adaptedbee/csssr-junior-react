@@ -40,13 +40,15 @@ class Cart extends React.Component {
           </p>
         </header>
 
-        <button 
-          onClick={this.saveCart} 
-          disabled={this.props.isSaving} 
-          className="button"
-        >
-          Сохранить корзину
-        </button>
+        {this.props.cartProducts.length > 0 && (
+          <button 
+            onClick={this.saveCart} 
+            disabled={this.props.isSaving} 
+            className="button"
+          >
+            Сохранить корзину
+          </button>
+        )}
   
         {this.props.cartProducts.length > 0 && (
           <button 
