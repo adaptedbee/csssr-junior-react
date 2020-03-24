@@ -35,11 +35,21 @@ class Cart extends React.Component {
     return (
       <section className="cart">
         <header className="cart__header">
-          <h2 className="cart__headline">Корзина</h2>
-          <p className={!this.props.isError && !this.props.isSaving ? 'cart__amount cart__amount--done' : 'cart__amount'}>
+          <h2 className={!this.props.isError && !this.props.isSaving ? 'cart__headline cart__headline--done' : 'cart__headline'}>Корзина</h2>
+        </header>
+
+        <div className="cart__parameter">
+          <p className="cart__parameter-name">Товаров</p>
+          <p className="cart__parameter-value">
             {this.props.cartProducts.length}
           </p>
-        </header>
+        </div>
+        <div className="cart__parameter">
+          <p className="cart__parameter-name">Всего</p>
+          <p className="cart__parameter-value cart__parameter-value--big">
+            23 000 ₽
+          </p>
+        </div>
 
         {this.props.cartProducts.length > 0 && (
           <button 
