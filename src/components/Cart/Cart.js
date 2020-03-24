@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import './Cart.css';
 
@@ -59,8 +60,8 @@ class Cart extends React.Component {
             Очистить корзину
           </button>
         )}
-  
-        <a className="cart__link" href="/">Перейти в корзину</a>
+        
+        <Link to="/cart" className="cart__link">Перейти в корзину</Link>
 
         {this.props.isError && (
           <p className="cart__message">Ошибка сохранения корзины</p>
