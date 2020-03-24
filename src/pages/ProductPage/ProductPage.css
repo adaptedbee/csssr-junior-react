@@ -3,6 +3,10 @@
   margin: 0 auto 80px;
 }
 
+.page--full-width {
+  width: 100%;
+}
+
 .page__header {
   display: flex;
   align-items: center;
