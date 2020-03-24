@@ -6,13 +6,13 @@ import './AddToCartButton.css';
 class AddToCartButton extends React.Component {
   handleClick = () => {
     if (this.isProductInCart()) {
-      this.props.removeFromCart(this.props.product.id);
+      this.props.removeFromCart(this.props.product);
     } else {
-      this.props.addToCart(this.props.product.id);
+      this.props.addToCart(this.props.product);
     }
   }
   isProductInCart = () => {
-    return this.props.cartProducts.includes(this.props.product.id);
+    return this.props.cartProducts.find(item => item.id === this.props.product.id);
   }
 
   render() {
