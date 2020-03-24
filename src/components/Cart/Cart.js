@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import './Cart.css';
+import formatPrice from '../../utils/utils';
 
 const SAVE_CART_URL = 'https://course-api.csssr.school/save';
 
@@ -31,6 +32,14 @@ class Cart extends React.Component {
     });
   }
 
+  getTotalCartPrice = () => {
+    if (!this.props.cartProducts || this.props.cartProducts.length === 0) {
+      return 0;
+    }
+    return this.props.cartProducts.reduce((accumulator, product) => accumulator + 
+    product.price, 0);
+  }
+
   render() {
     return (
       <section className="cart">
@@ -47,7 +56,7 @@ class Cart extends React.Component {
         <div className="cart__parameter">
           <p className="cart__parameter-name">Всего</p>
           <p className="cart__parameter-value cart__parameter-value--big">
-            23 000 ₽
+            {formatPrice(this.getTotalCartPrice())}
           </p>
         </div>
 
