@@ -9,6 +9,7 @@ import { store, history } from './store';
 import HomePage from './pages/HomePage/HomePage';
 import ProductPageContainer from './containers/ProductPageContainer';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import CartPageContainer from './containers/CartPageContainer';
 
 class App extends React.Component {
   render() {
@@ -17,6 +18,7 @@ class App extends React.Component {
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/product/:id" component={ProductPageContainer} />
+          <Route path="/cart" component={CartPageContainer} />
           <Route component={NotFoundPage} />
         </Switch>
       </ConnectedRouter>

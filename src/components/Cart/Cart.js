@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import './Cart.css';
+import formatPrice from '../../utils/utils';
 
 const SAVE_CART_URL = 'https://course-api.csssr.school/save';
 
@@ -30,15 +32,33 @@ class Cart extends React.Component {
     });
   }
 
+  getTotalCartPrice = () => {
+    if (!this.props.cartProducts || this.props.cartProducts.length === 0) {
+      return 0;
+    }
+    return this.props.cartProducts.reduce((accumulator, product) => accumulator + 
+    product.price, 0);
+  }
+
   render() {
     return (
       <section className="cart">
         <header className="cart__header">
-          <h2 className="cart__headline">Корзина</h2>
-          <p className={!this.props.isError && !this.props.isSaving ? 'cart__amount cart__amount--done' : 'cart__amount'}>
+          <h2 className={!this.props.isError && !this.props.isSaving ? 'cart__headline cart__headline--done' : 'cart__headline'}>Корзина</h2>
+        </header>
+
+        <div className="cart__parameter">
+          <p className="cart__parameter-name">Товаров</p>
+          <p className="cart__parameter-value">
             {this.props.cartProducts.length}
           </p>
-        </header>
+        </div>
+        <div className="cart__parameter">
+          <p className="cart__parameter-name">Всего</p>
+          <p className="cart__parameter-value cart__parameter-value--big">
+            {formatPrice(this.getTotalCartPrice())}
+          </p>
+        </div>
 
         {this.props.cartProducts.length > 0 && (
           <button 
@@ -59,8 +79,8 @@ class Cart extends React.Component {
             Очистить корзину
           </button>
         )}
-  
-        <a className="cart__link" href="/">Перейти в корзину</a>
+        
+        <Link to="/cart" className="cart__link">Перейти в корзину</Link>
 
         {this.props.isError && (
           <p className="cart__message">Ошибка сохранения корзины</p>

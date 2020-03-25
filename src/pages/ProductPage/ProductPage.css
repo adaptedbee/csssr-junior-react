@@ -1,6 +1,10 @@
 .page {
   width: 480px;
-  margin: 80px auto;
+  margin: 0 auto 80px;
+}
+
+.page--full-width {
+  width: 100%;
 }
 
 .page__header {
@@ -127,5 +131,6 @@
   margin: 24px auto 50px;
 
   width: 800px;
+  max-width: 100%;
   height: auto;
 }
